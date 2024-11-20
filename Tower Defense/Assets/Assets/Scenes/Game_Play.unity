@@ -787,6 +787,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2104793413414957276, guid: a187dc20c1bd638429d538125c7f7b1b, type: 3}
   m_PrefabInstance: {fileID: 4384461542195399460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1347645369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1347645371}
+  - component: {fileID: 1347645370}
+  m_Layer: 0
+  m_Name: BoidSytem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1347645370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347645369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe74321eaf4f694cac5a4ed44fa2450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boidPrefab: {fileID: 8409308559103762100, guid: 865b708fa87112b47b13909a80a3d4e9, type: 3}
+  numberOf: 50
+  settings:
+    alignment: 0.02
+    avoidance: 1000
+    cohesion: 0.4
+    attraction: 0
+    farThreshold: 10
+    speed: 30
+    turnRate: 0.2
+--- !u!4 &1347645371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347645369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.973099, y: 5.7083244, z: 17.190569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495177592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,6 +4454,7 @@ SceneRoots:
   - {fileID: 827655758}
   - {fileID: 400790290019030275}
   - {fileID: 1264477955}
+  - {fileID: 1347645371}
   - {fileID: 1495177593}
   - {fileID: 637801308}
   - {fileID: 1156544240}
