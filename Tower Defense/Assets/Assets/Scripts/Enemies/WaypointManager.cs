@@ -3,7 +3,7 @@ using UnityEngine;
 public class WaypointManager : MonoBehaviour
 {
     public static WaypointManager instance;
-    public Transform[] waypoints;
+    [HideInInspector] public Transform[] waypoints;
 
     private void Awake()
     {

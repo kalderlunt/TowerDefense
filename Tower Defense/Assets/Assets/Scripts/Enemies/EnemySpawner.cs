@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
             yield return StartCoroutine(SpawnWaveEnemies(currentWave));
 
-            yield return new WaitForSeconds(WaveInterval);
+            yield return new WaitForSeconds(WaveInterval); // peut etre remplace par un bouton ou trigger
 
             currentWaveIndex++;
         }
@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < config.count; i++)
         {
-            Instantiate(config.enemyPrefab, transform.position, Quaternion.identity);
+            Instantiate(config.enemyPrefab, transform.position, Quaternion.identity); // A CHANGER PAR LE POOL SYSTEM
 
             yield return new WaitForSeconds(config.spawnInterval);
         }

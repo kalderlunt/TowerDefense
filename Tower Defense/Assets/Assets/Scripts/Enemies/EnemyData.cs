@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class EnemyData
+
+public class EnemyData : MonoBehaviour
 {
-    int health;
-    float moveSpeed;
-    Transform transform;
+    public float health;
+    public float moveSpeed;
+    [HideInInspector] public Transform transform;
 }
