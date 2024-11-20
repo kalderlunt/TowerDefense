@@ -4,11 +4,12 @@ public class EnemyMovement : MonoBehaviour
 {
     public float Speed = 2f;
     private Transform[] waypoints;
-    private int currentWaypointIndex = 0;
+    [SerializeField] private int currentWaypointIndex;
 
-    private void Start()
+    private void OnEnable()
     {
-        waypoints = WaypointManager.Instance.Waypoints;
+        waypoints = WaypointManager.instance.waypoints;
+        currentWaypointIndex = 0;
         transform.position = waypoints[currentWaypointIndex].position;
     }
 

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 860135730810080390}
   - component: {fileID: 924566612287401036}
   - component: {fileID: 364231321972868142}
+  - component: {fileID: 2828846251931184194}
   m_Layer: 0
   m_Name: Enemy - Speedy
   m_TagString: Untagged
@@ -219,3 +220,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2828846251931184194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251825396150887082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04838fccb32ec894ea743f8c10c9564a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 4
+  currentWaypointIndex: 0
