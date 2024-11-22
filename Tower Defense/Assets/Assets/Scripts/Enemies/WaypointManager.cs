@@ -9,9 +9,11 @@ public class WaypointManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+
+        WaypointInitialize();
     }
 
-    private void Start()
+    private void WaypointInitialize()
     {
         waypoints = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)

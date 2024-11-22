@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{name} a été détruit !");
+        //Debug.Log($"{name} a été détruit !");
         Destroy(gameObject);
     }
 }

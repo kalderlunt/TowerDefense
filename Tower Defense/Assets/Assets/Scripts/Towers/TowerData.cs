@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "Tower Defense/Tower")]
 public class TowerData : ScriptableObject
 {
-    public string TowerName;
+    public string towerName;
     public int unlockCost; // Coût pour débloquer dans le menu
     public int baseCost; // Coût initial
     public int baseCellingPrice; // Prix de vente de base

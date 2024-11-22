@@ -1,15 +1,11 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private TowerData data; 
-
-    [SerializeField] private Transform attackPoint; // Point de tir ou de ciblage
-    [SerializeField] private LayerMask enemyLayer;
+    public TowerData data;
 
     [SerializeField] private SphereCollider rangeCollider;
 
@@ -17,17 +13,35 @@ public class Tower : MonoBehaviour
     private float fireCooldown = 0f;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
-    private void OnEnable()
+    public DetectionZoneDisplay zoneDisplay { get; private set; }
+
+
+    public bool isPlaced { get; private set; }
+    public bool isSelected { get; private set; }
+
+    private void Awake()
     {
         towerRange = GetComponentInChildren<TowerRange>();
-        Assert.IsNotNull(towerRange, $"Tower {data.TowerName} n'a pas de TowerRange");
+        Assert.IsNotNull(towerRange, $"Tower {data.towerName} n'a pas de TowerRange");
+        
+        zoneDisplay = GetComponentInChildren<DetectionZoneDisplay>();
+        Assert.IsNotNull(zoneDisplay, $"Tower {data.towerName} n'a pas de DetectionZoneDisplay");
+    }
 
+    private void OnEnable()
+    {
         towerRange.EventEnterInRange += OnEnemyEnterRange;
         towerRange.EventExitInRange += OnEnemyExitRange;
-        
+
         rangeCollider.radius = data.baseRange * 0.5f;
         enemiesInRange.Clear();
         fireCooldown = 0f;
+    }
+
+    private void OnDisable()
+    {
+        towerRange.EventEnterInRange -= OnEnemyEnterRange;
+        towerRange.EventExitInRange -= OnEnemyExitRange;
     }
 
     private void Update()
@@ -84,7 +98,7 @@ public class Tower : MonoBehaviour
 
     private bool IsEnemy(GameObject obj)
     {
-        Debug.Log($"{obj} est rentrer dans la zone pour etre check");
+        //Debug.Log($"{obj} est rentrer dans la zone pour etre check");
         return obj.GetComponent<Enemy>();
         //return ((1 << obj.layer) & enemyLayer) != 0;
     }
@@ -123,7 +137,7 @@ public class Tower : MonoBehaviour
             transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
             enemyScript.TakeDamage(damage, data.typeDamage);
 
-            Debug.Log($"La tour {data.TowerName} a infligé {damage} dégâts à {enemy.name}.");
+            //bug.Log($"La tour {data.TowerName} a infligé {damage} dégâts à {enemy.name}.");
 
             // Play Sound
         }
