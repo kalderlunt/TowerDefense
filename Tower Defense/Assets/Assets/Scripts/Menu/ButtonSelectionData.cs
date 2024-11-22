@@ -4,15 +4,16 @@ using UnityEngine.UI;
 
 public class ButtonSelectionData : MonoBehaviour
 {
+    [SerializeField] private Image imagePreviewSlot;
     public Button button { get; private set; }
     public Image imageSlot { get; private set; }
     public TMP_Text nameText { get; private set; }
 
     private void Awake()
     {
-        button = GetComponent<Button>();
-        imageSlot = GetComponentInChildren<Image>();
+        button = GetComponentInChildren<Button>();
         nameText = GetComponentInChildren<TMP_Text>();
+        imageSlot = imagePreviewSlot;
     }
 
     public void SetName(string name)
