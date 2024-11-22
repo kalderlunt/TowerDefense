@@ -49,7 +49,7 @@ public class Tower : MonoBehaviour
         fireCooldown -= Time.deltaTime;
 
         // Supprimer les ennemis hors de portée
-        enemiesInRange.RemoveAll(enemy => enemy == null || !IsInRange(enemy.transform));
+        enemiesInRange.RemoveAll(enemy => enemy == null || !IsInRange(enemy.transform) || !enemy.activeInHierarchy);
 
         if (fireCooldown <= 0f && enemiesInRange.Count > 0)
         {
@@ -130,16 +130,12 @@ public class Tower : MonoBehaviour
     private void Attack(GameObject enemy)
     {
         Enemy enemyScript = enemy.GetComponent<Enemy>();
-        if (enemyScript != null)
-        {
-            float damage = data.baseDamage;
+        Assert.IsNotNull(enemyScript, $"L'objet {enemy.name} n'a pas de script Enemy attaché.");
 
-            transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
-            enemyScript.TakeDamage(damage, data.typeDamage);
+        float damage = data.baseDamage;
 
-            //bug.Log($"La tour {data.TowerName} a infligé {damage} dégâts à {enemy.name}.");
-
-            // Play Sound
-        }
+        transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
+        enemyScript.TakeDamage(damage, data.typeDamage);
+        // Play Sound
     }
 }

@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyData))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IPooledObject<Enemy>
 {
     EnemyData data;
+
+    private Pool<Enemy> pool;
+    public event Action onDeath;
 
     private void Awake()
     {
@@ -20,9 +24,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetPool(Pool<Enemy> pool)
+    {
+        this.pool = pool;
+    }
+
+    public void ResetData()
+    {
+        data.ResetData();
+    }
+
     private void Die()
     {
         //Debug.Log($"{name} a été détruit !");
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        onDeath?.Invoke();
+        onDeath = null;    // Nettoyage des abonnements
     }
 }

@@ -7,9 +7,30 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemyWave> Waves;
     [SerializeField] private float WaveInterval = 30f;
 
+    private Dictionary<GameObject, ComponentPool<Enemy>> enemyPools; // Pools basés sur des piles
     private int currentWaveIndex = 0;
+
     private void Start()
     {
+        enemyPools = new Dictionary<GameObject, ComponentPool<Enemy>>();
+
+        foreach (EnemyWave wave in Waves)
+        {
+            foreach (EnemyConfig config in wave.enemies)
+            {
+                if (enemyPools.ContainsKey(config.enemyPrefab))
+                {
+                    continue;
+                }
+
+                enemyPools[config.enemyPrefab] = new ComponentPool<Enemy>(
+                    config.enemyPrefab,
+                    capacity: 50,
+                    preAllocateCount: 50 // Pré-allocation initiale
+                );
+            }
+        }
+
         StartCoroutine(SpawnWaves());
     }
 
@@ -18,11 +39,9 @@ public class EnemySpawner : MonoBehaviour
         while (currentWaveIndex < Waves.Count)
         {
             EnemyWave currentWave = Waves[currentWaveIndex];
-
             Debug.Log($"Vague {currentWaveIndex + 1} : {currentWave.waveName}");
 
             yield return StartCoroutine(SpawnWaveEnemies(currentWave));
-
             yield return new WaitForSeconds(WaveInterval); // peut etre remplace par un bouton ou trigger
 
             currentWaveIndex++;
@@ -43,7 +62,15 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < config.count; i++)
         {
-            Instantiate(config.enemyPrefab, transform.position, Quaternion.identity); // A CHANGER PAR LE POOL SYSTEM
+            //Instantiate(config.enemyPrefab, transform.position, Quaternion.identity); // A CHANGER PAR LE POOL SYSTEM
+
+            Enemy enemy = enemyPools[config.enemyPrefab].Get();
+            
+            //remettre ses data a 0
+            enemy.ResetData();
+
+            // Relâcher l'ennemi dans le pool après sa mort
+            enemy.onDeath += () => enemyPools[config.enemyPrefab].Release(enemy);
 
             yield return new WaitForSeconds(config.spawnInterval);
         }

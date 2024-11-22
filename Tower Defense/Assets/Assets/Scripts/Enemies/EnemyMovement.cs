@@ -7,10 +7,14 @@ public class EnemyMovement : MonoBehaviour
     private Transform[] waypoints;
     private int currentWaypointIndex;
 
-    private void OnEnable()
+    private void Start()
     {
         data = GetComponent<EnemyData>();
         data.transform = transform;
+    }
+
+    private void OnEnable()
+    {
         waypoints = WaypointManager.instance.waypoints;
         currentWaypointIndex = 0;
         transform.position = waypoints[currentWaypointIndex].position;
@@ -25,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         data.transform.LookAt(new Vector3(targetPosition.x, data.transform.position.y, targetPosition.z));
         transform.position = Vector3.MoveTowards(data.transform.position, targetPosition, data.moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        if (Vector3.Distance(data.transform.position, targetPosition) < 0.1f)
         {
             currentWaypointIndex++;
         }
