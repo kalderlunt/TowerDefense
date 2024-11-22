@@ -18,8 +18,10 @@ public class TowerData : ScriptableObject
     [Header("Parameters Damage")]
     public float baseDamage; // Dégâts de base
     public float bulletsOfNumber = 1f;
+    public Damage damage; // Niveau de degat
     public DamageType damageType; // Type de dégâts
     public float baseFirerate; // Cadence de tir de base
+    public RangeInfo rangeInfo;
     public float baseRange; // Portée de base
 
     [Header("Minimum Detection")]
@@ -31,7 +33,7 @@ public class TowerData : ScriptableObject
     public FootPrint placementFootprint; // Taille approximative pour le placement
 
     [Header("Menu Selection")]
-    public Sprite buttonIcon; // Optionnel, pour afficher l'icône sur le bouton
+    public Sprite buttonSprite; // Optionnel, pour afficher l'icône sur le bouton
 }
 
 
@@ -48,12 +50,27 @@ public enum TowerType
     Support 
 }
 
+public enum Damage
+{
+    Low,
+    Medium,
+    High,
+}
+
 public enum DamageType 
 {
     Single,
     Burst,
     PierceSpread,
     Splash,
+}
+
+public enum RangeInfo
+{
+    Low,
+    Medium,
+    High,
+    VeryHigh,
 }
 
 public enum TowerLevel
