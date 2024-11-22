@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
-  m_Name: SO_Scout
+  m_Name: SO_Sniper
   m_EditorClassIdentifier: 
-  towerName: Scout
+  towerName: Sniper
   level: 0
   unlockCost: 0
-  baseCost: 200
-  baseCellingPrice: 66
+  baseCost: 300
+  baseCellingPrice: 100
   type: 0
-  placement: 0
-  baseDamage: 1
+  placement: 1
+  baseDamage: 4
   typeDamage: 0
   Mode: 0
-  baseFirerate: 1.208
-  baseRange: 12
+  baseFirerate: 4.008
+  baseRange: 27.5
   hiddenDetection: 2
-  leadDetection: 0
-  flyingDetection: 0
-  immunities: 0
+  leadDetection: 3
+  flyingDetection: 1
+  immunities: 1
   placementFootprint: 1
   buttonIcon: {fileID: 0}

@@ -58,12 +58,12 @@ public class PlayerInput : MonoBehaviour
         }
 
         if (targetSelected != null)
-            targetSelected.GetComponent<TowerSelection>().Deselect();
+            targetSelected.GetComponent<TowerSelectable>().Deselect();
 
         targetSelected = newTarget;
         
         if (targetSelected != null)
-            targetSelected.GetComponent<TowerSelection>().Select();
+            targetSelected.GetComponent<TowerSelectable>().Select();
     }
 
     public void Deselect(InputAction.CallbackContext context)
@@ -87,7 +87,7 @@ public class PlayerInput : MonoBehaviour
             return;
         }
 
-        targetSelected.GetComponent<TowerSelection>().Deselect();
+        targetSelected.GetComponent<TowerSelectable>().Deselect();
         targetSelected = null;
     }
 

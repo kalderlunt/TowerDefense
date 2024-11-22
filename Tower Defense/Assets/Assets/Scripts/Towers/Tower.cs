@@ -51,36 +51,42 @@ public class Tower : MonoBehaviour
         // Supprimer les ennemis hors de portée
         enemiesInRange.RemoveAll(enemy => enemy == null || !IsInRange(enemy.transform) || !enemy.activeInHierarchy);
 
+        AttackByType();
+    }
+
+    private void AttackByType()
+    {
         if (fireCooldown <= 0f && enemiesInRange.Count > 0)
         {
-            switch (data.Mode)
+            switch (data.damageType)
             {
-                case TowerData.AttackMode.Single:
+                case DamageType.Single:
                     Attack(enemiesInRange[0]); // Première cible
                     break;
 
-                case TowerData.AttackMode.Multiple:
+                /*case DamageType.Multiple:
                     AttackMultiple(3); // Par exemple, attaque jusqu'à 3 cibles
                     break;
 
-                case TowerData.AttackMode.Random:
+                case DamageType.Random:
                     Attack(enemiesInRange[Random.Range(0, enemiesInRange.Count)]);
                     break;
 
-                case TowerData.AttackMode.Closest:
+                case DamageType.Closest:
                     Attack(GetClosestEnemy());
                     break;
 
-                case TowerData.AttackMode.Farthest:
+                case DamageType.Farthest:
                     Attack(GetFarthestEnemy());
-                    break;
+                    break;*/
             }
 
             fireCooldown = 1f / data.baseFirerate; // Réinitialiser le cooldown
         }
     }
 
-    private void OnEnemyEnterRange(Collider collision)
+
+        private void OnEnemyEnterRange(Collider collision)
     {
         if (IsEnemy(collision.gameObject) /*&& IsInRange(collision.transform)*/)
         {
@@ -135,7 +141,7 @@ public class Tower : MonoBehaviour
         float damage = data.baseDamage;
 
         transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
-        enemyScript.TakeDamage(damage, data.typeDamage);
+        enemyScript.TakeDamage(damage, data.damageType);
         // Play Sound
     }
 }

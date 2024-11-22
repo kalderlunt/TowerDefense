@@ -4,30 +4,85 @@ using UnityEngine;
 public class TowerData : ScriptableObject
 {
     public string towerName;
+    public TowerLevel level;
+
+    [Header("Price")]
     public int unlockCost; // Coût pour débloquer dans le menu
     public int baseCost; // Coût initial
     public int baseCellingPrice; // Prix de vente de base
 
-    public enum TowerType { Offensive, Support }
+    [Header("Placement")]
     public TowerType type; // Type de la tour (offensive ou support)
+    public PlacementType placement; // Placement possible sur le terrain (sol, montagne, air)
 
-    public enum PlacementType { Ground, Air }
-    public PlacementType placement; // Placement possible
-
+    [Header("Parameters Damage")]
     public float baseDamage; // Dégâts de base
-    public enum DamageType { Physical, Magical, True }
-    public DamageType typeDamage; // Type de dégâts
-
-    public enum AttackMode { Single, Multiple, Random, Closest, Farthest }
-    public AttackMode Mode; // Mode d'attaque de la tour
-
+    public float bulletsOfNumber = 1f;
+    public DamageType damageType; // Type de dégâts
     public float baseFirerate; // Cadence de tir de base
     public float baseRange; // Portée de base
 
-    public bool hiddenDetection; // Détection d'ennemis invisibles (après niveau 2)
-    public bool leadDetection; // Détection d'ennemis blindés
-    public bool flyingDetection; // Détection d'ennemis volants
-    public bool immunities; // Immunité aux altérations d'état
+    [Header("Minimum Detection")]
+    public MinimumDetection hiddenDetection; // Détection d'ennemis invisibles (après niveau 2)
+    public MinimumDetection leadDetection; // Détection d'ennemis blindés
+    public MinimumDetection flyingDetection; // Détection d'ennemis volants
+    public Immunities immunities; // Immunité aux altérations d'état
 
-    public float placementFootprint; // Taille approximative pour le placement
+    public FootPrint placementFootprint; // Taille approximative pour le placement
+
+    [Header("Menu Selection")]
+    public Sprite buttonIcon; // Optionnel, pour afficher l'icône sur le bouton
+}
+
+
+public enum PlacementType 
+{ 
+    Ground,
+    Cliff,
+    Air,
+}
+
+public enum TowerType 
+{ 
+    Offensive, 
+    Support 
+}
+
+public enum DamageType 
+{
+    Single,
+    Burst,
+    PierceSpread,
+    Splash,
+}
+
+public enum TowerLevel
+{
+    level1,
+    level2,
+    level3,
+    level4,
+    level5,
+}
+
+public enum MinimumDetection
+{
+    NotApplicable,
+    level1,
+    level2,
+    level3,
+    level4,
+    level5,
+}
+
+public enum Immunities
+{
+    None,
+    Stun,
+}
+
+public enum FootPrint
+{
+    NotApplicable,
+    Average,
 }
