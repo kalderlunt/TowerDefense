@@ -57,3 +57,7 @@ MonoBehaviour:
   towerRangeText: {fileID: 0}
   towerPlacementText: {fileID: 0}
   towerIconSprite: {fileID: 0}
+  purchaseButton: {fileID: 0}
+  purchaseButtonText: {fileID: 0}
+  unlockButtonColor: {r: 0.29411766, g: 0.50980395, b: 0.65882355, a: 1}
+  lockButtonColor: {r: 0.74509805, g: 0.62352943, b: 0.42352945, a: 1}

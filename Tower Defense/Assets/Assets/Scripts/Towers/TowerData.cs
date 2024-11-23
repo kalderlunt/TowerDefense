@@ -8,7 +8,7 @@ public class TowerData : ScriptableObject
 
     [Header("Price")]
     public int unlockCost; // Coût pour débloquer dans le menu
-    public int baseCost; // Coût initial
+    public int baseCost; // Coût initial dans le jeu 
     public int baseCellingPrice; // Prix de vente de base
 
     [Header("Placement")]
@@ -31,6 +31,9 @@ public class TowerData : ScriptableObject
     public Immunities immunities; // Immunité aux altérations d'état
 
     public FootPrint placementFootprint; // Taille approximative pour le placement
+
+    [Header("Locked / Unlock")]
+    public PurchaseState purchaseState; // si le joueur peut acheter 
 
     [Header("Menu Selection")]
     public Sprite buttonSprite; // Optionnel, pour afficher l'icône sur le bouton
@@ -102,4 +105,10 @@ public enum FootPrint
 {
     NotApplicable,
     Average,
+}
+
+public enum PurchaseState
+{
+    Lock,
+    Unlock,
 }
