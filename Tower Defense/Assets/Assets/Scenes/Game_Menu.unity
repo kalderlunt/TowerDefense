@@ -399,7 +399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &421203757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1053,6 +1053,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1419952859}
     - target: {fileID: 8125254863252818569, guid: 595229ffa2d9eaa43ad70ce4a2fd6cf3, type: 3}
+      propertyPath: towers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125254863252818569, guid: 595229ffa2d9eaa43ad70ce4a2fd6cf3, type: 3}
       propertyPath: towerPlacementText
       value: 
       objectReference: {fileID: 1582399125}
@@ -1064,6 +1068,10 @@ PrefabInstance:
       propertyPath: towerButtonContainer
       value: 
       objectReference: {fileID: 1052551321}
+    - target: {fileID: 8125254863252818569, guid: 595229ffa2d9eaa43ad70ce4a2fd6cf3, type: 3}
+      propertyPath: 'towers.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bb1e6f36a9d2d1d44b91ffe0aeb6df62, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1167,7 +1175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449079601180488990, guid: 8118c4c318d69f9488efbe436be2e62c, type: 3}
       propertyPath: m_Padding.m_Left
-      value: 13
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6879975433592324805, guid: 8118c4c318d69f9488efbe436be2e62c, type: 3}
       propertyPath: m_Name
