@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-public class TowerSelection : MonoBehaviour, ISelectable
+public class TowerSelectable : MonoBehaviour, ISelectable
 {
     public bool isPlaced { get; private set; }
     public bool isSelected { get; private set; }

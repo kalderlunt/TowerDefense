@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IPooledObject<Enemy>
         data = GetComponent<EnemyData>();
     }
 
-    public void TakeDamage(float damage, TowerData.DamageType damageType)
+    public void TakeDamage(float damage, DamageType damageType)
     {
         data.health -= damage;
 
