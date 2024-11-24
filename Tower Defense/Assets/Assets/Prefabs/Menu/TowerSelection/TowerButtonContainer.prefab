@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824548148903376186}
-  - component: {fileID: 8243341910738648629}
+  - component: {fileID: 5399874953715864156}
   - component: {fileID: 5449079601180488990}
-  - component: {fileID: 5680297155349177058}
+  - component: {fileID: 397254492395928165}
   m_Layer: 5
   m_Name: TowerButtonContainer
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: -96.04736, y: -35.21747}
   m_SizeDelta: {x: 531.145, y: 823.557}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8243341910738648629
+--- !u!114 &5399874953715864156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 13
+    m_Left: 9
     m_Right: 0
     m_Top: 13
     m_Bottom: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Spacing: {x: 7, y: 7}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!222 &5680297155349177058
+--- !u!222 &397254492395928165
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

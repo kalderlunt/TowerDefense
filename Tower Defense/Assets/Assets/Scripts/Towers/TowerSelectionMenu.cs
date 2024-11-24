@@ -79,19 +79,19 @@ public class TowerSelectionMenu : MonoBehaviour
     {
         for (int i = 0; i < playerInventory.towers.Count; i++)
         {
-            // check si le premier est deja pris
-            // sinon tu passes au deuxieme
-            // et si ils sont tous pris (debug.log())
-
-            if (playerInventory.towers[i] != null)
+            if (playerInventory.towers[i] == tower)
             {
-                Debug.Log("Ton inventaire est deja plein");
-                continue;
+                return;
             }
 
-            if (playerInventory.towers[i] != tower)
+            Debug.Log("Tu a deja cette troupe");
+        }
+
+        for (int i = 0; i < playerInventory.towers.Count; i++)
+        {
+            if (playerInventory.towers[i] != null)
             {
-                Debug.Log("Tu a deja cette troupe");
+                Debug.Log($"L'inventaire {i} est deja rempli");
                 continue;
             }
 
