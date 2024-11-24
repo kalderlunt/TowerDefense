@@ -59,5 +59,9 @@ MonoBehaviour:
   towerIconSprite: {fileID: 0}
   purchaseButton: {fileID: 0}
   purchaseButtonText: {fileID: 0}
+  lockCreditImage: {fileID: 0}
   unlockButtonColor: {r: 0.29411766, g: 0.50980395, b: 0.65882355, a: 1}
   lockButtonColor: {r: 0.74509805, g: 0.62352943, b: 0.42352945, a: 1}
+  inventoryContainer: {fileID: 0}
+  inventoryItemPrefab: {fileID: 5379149903525914, guid: 0dabb60aea18a1a4d974f3939f37f4af, type: 3}
+  playerInventory: {fileID: 11400000, guid: f4f39b6c8b5aee54e9fd87519b69c6e2, type: 2}

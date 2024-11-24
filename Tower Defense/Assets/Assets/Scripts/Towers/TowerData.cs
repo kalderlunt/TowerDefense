@@ -36,7 +36,7 @@ public class TowerData : ScriptableObject
     public PurchaseState purchaseState; // si le joueur peut acheter 
 
     [Header("Menu Selection")]
-    public Sprite buttonSprite; // Optionnel, pour afficher l'icône sur le bouton
+    public Sprite sprite; // Optionnel, pour afficher l'icône sur le bouton
 }
 
 
@@ -109,6 +109,6 @@ public enum FootPrint
 
 public enum PurchaseState
 {
-    Lock,
-    Unlock,
+    Locked,
+    Unlocked,
 }

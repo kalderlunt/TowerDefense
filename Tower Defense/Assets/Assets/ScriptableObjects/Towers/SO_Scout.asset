@@ -32,4 +32,4 @@ MonoBehaviour:
   immunities: 0
   placementFootprint: 1
   purchaseState: 1
-  buttonSprite: {fileID: 21300000, guid: c9965fc86a2aac648a47e39c99f5c219, type: 3}
+  sprite: {fileID: 21300000, guid: c9965fc86a2aac648a47e39c99f5c219, type: 3}
