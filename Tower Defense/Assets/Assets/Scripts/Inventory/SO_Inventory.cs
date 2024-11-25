@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Tower Defense/Player Inventory")]
-public class PlayerInventory : ScriptableObject
+public class SO_Inventory : ScriptableObject
 {
     public uint credits = 0;
 

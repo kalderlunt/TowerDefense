@@ -47,6 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1676736248274824231}
   - component: {fileID: 3756338121038529122}
+  - component: {fileID: 4759883721704522439}
   m_Layer: 5
   m_Name: Our Towers Container Game
   m_TagString: Untagged
@@ -101,6 +102,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4759883721704522439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696150888286462474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36a70174d52ce842ae77ea5251a23c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: f4f39b6c8b5aee54e9fd87519b69c6e2, type: 2}
+  selectedTower: {fileID: 0}
+  inventoryItemPrefab: {fileID: 5379149903525914, guid: 0dabb60aea18a1a4d974f3939f37f4af, type: 3}
+  inventoryContainer: {fileID: 1676736248274824231}
 --- !u!1 &3459694631224500188
 GameObject:
   m_ObjectHideFlags: 0

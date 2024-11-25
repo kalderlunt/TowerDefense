@@ -1148,6 +1148,10 @@ PrefabInstance:
       value: TowerSelectionManager
       objectReference: {fileID: 0}
     - target: {fileID: 8125254863252818569, guid: 595229ffa2d9eaa43ad70ce4a2fd6cf3, type: 3}
+      propertyPath: inventoryData
+      value: 
+      objectReference: {fileID: 11400000, guid: f4f39b6c8b5aee54e9fd87519b69c6e2, type: 2}
+    - target: {fileID: 8125254863252818569, guid: 595229ffa2d9eaa43ad70ce4a2fd6cf3, type: 3}
       propertyPath: towerCostText
       value: 
       objectReference: {fileID: 446577952}
@@ -1308,10 +1312,6 @@ PrefabInstance:
     - target: {fileID: 4389424771491702710, guid: c1b7e8b51da501040b88e41d61d26485, type: 3}
       propertyPath: m_Name
       value: Player Inventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389424771491702710, guid: c1b7e8b51da501040b88e41d61d26485, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6081819318258919773, guid: c1b7e8b51da501040b88e41d61d26485, type: 3}
       propertyPath: m_LocalPosition.x

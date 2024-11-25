@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class TowerSelectionMenu : MonoBehaviour
+public class TowerSelectionMenu : PlayerInventory
 {
     [Header("Tower Selection Side")]
     [SerializeField] private TowerData[] towers; // Tableau de toutes les tours disponibles
@@ -33,15 +33,10 @@ public class TowerSelectionMenu : MonoBehaviour
     [SerializeField] private Color unlockButtonColor; // Couleur du bouton d'achat quand il l'a debloque
     [SerializeField] private Color lockButtonColor; // Couleur du bouton d'achat quand il ne la pas debloque
 
-    private TowerData selectedTower; // Tour actuellement sélectionnée
-
-
     [Header("Inventory Side (Left Side)")]
     [SerializeField] private Transform inventoryContainer; // Conteneur pour les éléments de l'inventaire
-    [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué pour les éléments de l'inventaire
-
-    [SerializeField] private PlayerInventory playerInventory; // Référence à l'inventaire du joueur
-    private List<GameObject> inventorySlots = new List<GameObject>();
+    [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué pour les éléments de l'
+    private List<GameObject> inventorySlots = new List<GameObject>(5);
 
 
     void Start()
@@ -55,29 +50,20 @@ public class TowerSelectionMenu : MonoBehaviour
         purchaseButton.onClick = null;
     }
 
-    private void PopulateInventory()
+    #region Inventory
+    protected override void PopulateInventory()
     {
-
-        for (int i = 0; i < playerInventory.towers.Count; i++) 
+        for (int i = 0; i < inventoryData.towers.Count; i++) 
         {
-            CreateSlotInventory(playerInventory.towers[i]);
-            RefreshInventory(i, playerInventory.towers[i]);
+            CreateSlotInventory(inventorySlots, inventoryItemPrefab, inventoryContainer, () => UnequipSelectedTower(i));
+            // Passer l'index à la fonction de mise à jour de l'inventaire
+            RefreshInventory(inventorySlots, i, inventoryData.towers[i], () => UnequipSelectedTower(i)); // i est l'index correct ici
         }
-    }
-
-    private void CreateSlotInventory(TowerData tower)
-    {
-        GameObject item = Instantiate(inventoryItemPrefab, inventoryContainer);
-        inventorySlots.Add(item);
-        
-        InventoryItemData itemData = item.GetComponent<InventoryItemData>();
-        itemData.SetSprite(null);
-        itemData.SetPrice(-1);
     }
 
     private void AddTowerInSlotInventory(TowerData tower)
     {
-        for (int i = 0; i < playerInventory.towers.Count; i++)
+        /*for (int i = 0; i < playerInventory.towers.Count; i++)
         {
             if (playerInventory.towers[i] == tower)
             {
@@ -85,24 +71,38 @@ public class TowerSelectionMenu : MonoBehaviour
             }
 
             Debug.Log("Tu a deja cette troupe");
-        }
-
-        for (int i = 0; i < playerInventory.towers.Count; i++)
+        }*/
+        if (inventoryData.towers.Contains(tower))
         {
-            if (playerInventory.towers[i] != null)
-            {
-                Debug.Log($"L'inventaire {i} est deja rempli");
-                continue;
-            }
-
-            playerInventory.towers[i] = tower;
-            RefreshInventory(i, tower);
+            Debug.Log("Cette tour est déjà dans l'inventaire !");
             return;
         }
+
+        // Ajoute la tour dans un slot vide
+        for (int i = 0; i < inventoryData.towers.Count; i++)
+        {
+            if (inventoryData.towers[i] == null)
+            {
+                inventoryData.towers[i] = tower;
+                RefreshInventory(inventorySlots, i, tower, () => UnequipSelectedTower(i)); // Passer l'index correct ici
+                return;
+            }
+        }
+
+        Debug.Log("L'inventaire est plein !");
     }
 
-    private void RefreshInventory(int index, TowerData tower)
+
+    protected override void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
     {
+        Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
+
+        if (index < 0 || index >= inventorySlots.Count)
+        {
+            Debug.LogWarning("Index hors des limites de la liste des slots !");
+            return;
+        }
+
         InventoryItemData itemData = inventorySlots[index].GetComponent<InventoryItemData>();
 
         if (tower == null)
@@ -115,24 +115,34 @@ public class TowerSelectionMenu : MonoBehaviour
 
         itemData.SetSprite(tower.sprite);
         itemData.SetPrice(tower.baseCost);
-        itemData.button.onClick.AddListener(() => UnequipSelectedTower(index, tower));
+        itemData.button.onClick.RemoveAllListeners();
+        itemData.button.onClick.AddListener(() => UnequipSelectedTower(index));
     }
-
 
 
     private void EquipSelectedTower()
     {
         AddTowerInSlotInventory(selectedTower);
     }
-    private void UnequipSelectedTower(int index, TowerData tower)
+    private void UnequipSelectedTower(int index)
     {
-        playerInventory.towers[index] = null;
-        RefreshInventory(index, null);
+        Debug.Log("Taille de l'inventaire : " + inventoryData.towers.Count);
+        Debug.Log("Index sélectionné : " + index);
+
+        if (index >= 0 && index < inventoryData.towers.Count)
+        {
+            inventoryData.towers[index] = null;
+            RefreshInventory(inventorySlots, index, null, null); // Mettre à jour l'inventaire après avoir retiré la tour
+        }
+        else
+        {
+            Debug.LogWarning("Index hors de portée : " + index);
+        }
     }
+    #endregion
 
 
-
-
+    #region MarketTower
     private void PopulateTowerButtons()
     {
         foreach (TowerData tower in towers)
@@ -141,7 +151,7 @@ public class TowerSelectionMenu : MonoBehaviour
             ButtonSelectionData buttonData = button.GetComponent<ButtonSelectionData>();
 
             buttonData.SetName(tower.towerName);
-            buttonData.button.onClick.AddListener(() => SelectTower(tower));
+            ButtonAddListener(buttonData.button, () => SelectTower(tower));
 
             if (tower.sprite != null)
             {
@@ -191,10 +201,10 @@ public class TowerSelectionMenu : MonoBehaviour
     {
         Image purchaseButtonColor = purchaseButton.GetComponent<Image>();
 
-        if (CheckIfTowerPurchased(selectedTower))
+        if (CanTowerPurchased(selectedTower))
         {
             purchaseButtonText.text = "Equip";
-            PurchaseButtonAddListener(EquipSelectedTower);
+            ButtonAddListener(purchaseButton, EquipSelectedTower);
             purchaseButtonColor.color = unlockButtonColor;
             lockCreditImage.SetActive(false);
             return;
@@ -202,7 +212,7 @@ public class TowerSelectionMenu : MonoBehaviour
         
 
         purchaseButtonText.text = selectedTower.unlockCost <= 0 ? "Free" : $"{selectedTower.unlockCost} Credits";
-        PurchaseButtonAddListener(TowerLockedAction);
+        ButtonAddListener(purchaseButton, TowerLockedAction);
         purchaseButtonColor.color = lockButtonColor;
         lockCreditImage.SetActive(true);
 
@@ -210,9 +220,9 @@ public class TowerSelectionMenu : MonoBehaviour
 
     private void TowerLockedAction()
     {
-        if (playerInventory.credits >= selectedTower.unlockCost)
+        if (inventoryData.credits >= selectedTower.unlockCost)
         {
-            playerInventory.credits -= (uint)selectedTower.unlockCost;
+            inventoryData.credits -= (uint)selectedTower.unlockCost;
             selectedTower.purchaseState = PurchaseState.Unlocked;
             UpdateTowerDetails();
             return;
@@ -221,16 +231,9 @@ public class TowerSelectionMenu : MonoBehaviour
         Debug.Log("Tu n'as pas assez d'argent");
     }
 
-    private bool CheckIfTowerPurchased(TowerData tower)
+    private bool CanTowerPurchased(TowerData tower)
     {
         return tower.purchaseState == PurchaseState.Unlocked ? true : false;
     }
-
-    private void PurchaseButtonAddListener(UnityAction call)
-    {
-        purchaseButton.onClick.RemoveAllListeners();
-
-        if (call == null) return;
-        purchaseButton.onClick.AddListener(call);
-    }
+    #endregion
 }

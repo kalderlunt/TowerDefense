@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46d5bc607bc1f943833d494ca1c1ba2, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  credits: 0
+  credits: 2500
   towers:
   - {fileID: 11400000, guid: b61ccdea5eb528c4aa255053186d2b90, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: d79981d73a169964d894500b3cdfb831, type: 2}
+  - {fileID: 0}
