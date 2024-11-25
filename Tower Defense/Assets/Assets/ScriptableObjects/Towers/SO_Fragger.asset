@@ -38,4 +38,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b4d235b02fd06c945a4b6b395945bcca, type: 3}
   - {fileID: 21300000, guid: 2fe89178bf13efb4f92177596e9a39b9, type: 3}
   - {fileID: 21300000, guid: 481baea69582ecd41ae71a05455d7f6e, type: 3}
-  objPrefabs: {fileID: 0}
+  objPrefabs: {fileID: 3689182355398929419, guid: bdc0100f5bba5ba408ccaf9ecd6bc3f9, type: 3}
+  test:
+    serializedVersion: 2
+    m_Bits: 0

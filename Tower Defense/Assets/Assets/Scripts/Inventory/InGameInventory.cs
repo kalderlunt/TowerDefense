@@ -25,7 +25,6 @@ public class InGameInventory : PlayerInventory
         }
     }
 
-
     protected override void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
     {
         Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
@@ -49,8 +48,7 @@ public class InGameInventory : PlayerInventory
         itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
 
-        itemData.button.onClick.RemoveAllListeners();
-        itemData.button.onClick.AddListener(() => PlacePreviewTower(index));
+        ButtonAddListener(itemData.button, () => PlacePreviewTower(index));
     }
 
 

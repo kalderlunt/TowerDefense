@@ -48,9 +48,13 @@ MonoBehaviour:
   selectedTower: {fileID: 0}
   towers:
   - {fileID: 11400000, guid: b61ccdea5eb528c4aa255053186d2b90, type: 2}
+  - {fileID: 11400000, guid: e8f9db986ec096642bb77487726ab823, type: 2}
   - {fileID: 11400000, guid: d79981d73a169964d894500b3cdfb831, type: 2}
   - {fileID: 11400000, guid: bb1e6f36a9d2d1d44b91ffe0aeb6df62, type: 2}
+  - {fileID: 11400000, guid: aaa2c7496f81b114699ed26dbbfe4163, type: 2}
+  - {fileID: 11400000, guid: f5f795c7562ade34aa6b7505b9545e9a, type: 2}
   - {fileID: 11400000, guid: ae9b916e83bda2d4daadceac1d1ec90b, type: 2}
+  - {fileID: 11400000, guid: 94e815d123b6f7a4f96c725193f32373, type: 2}
   towerButtonContainer: {fileID: 0}
   towerButtonPrefab: {fileID: 6814239452926221157, guid: dd329374d47b20f4ca470257ba395225, type: 3}
   towerNameText: {fileID: 0}

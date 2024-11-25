@@ -83,7 +83,6 @@ public class PlayerInventory : MonoBehaviour
     protected void ButtonAddListener(Button button, UnityAction call)
     {
         button.onClick.RemoveAllListeners();
-        if (call == null) return;
         button.onClick.AddListener(call);
     }
 }

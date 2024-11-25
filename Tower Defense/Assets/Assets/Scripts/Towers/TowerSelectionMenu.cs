@@ -115,8 +115,7 @@ public class TowerSelectionMenu : PlayerInventory
 
         itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
-        itemData.button.onClick.RemoveAllListeners();
-        itemData.button.onClick.AddListener(() => UnequipSelectedTower(index));
+        ButtonAddListener(itemData.button, () => UnequipSelectedTower(index));
     }
 
 

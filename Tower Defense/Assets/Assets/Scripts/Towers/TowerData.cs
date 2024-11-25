@@ -54,7 +54,8 @@ public enum PlacementType
 
 public enum TowerType 
 { 
-    Offensive, 
+    Offensive,
+    Economy,
     Support 
 }
 
@@ -63,10 +64,12 @@ public enum Damage
     Low,
     Medium,
     High,
+    GeneratesMoney,
 }
 
-public enum DamageType 
+public enum DamageType
 {
+    NotApplicable,
     Single,
     Burst,
     PierceSpread,
@@ -75,6 +78,7 @@ public enum DamageType
 
 public enum RangeInfo
 {
+    NotApplicable,
     Low,
     Medium,
     High,
@@ -110,6 +114,7 @@ public enum Immunities
 public enum FootPrint
 {
     NotApplicable,
+    AboveAverange,
     Average,
     VeryLarge,
 }
