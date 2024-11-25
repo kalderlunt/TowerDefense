@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class InGameInventory : PlayerInventory
 {
     [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué des slots d'inventaire
     [SerializeField] private Transform inventoryContainer; // Conteneur des slots d'inventaire
     private List<GameObject> inventorySlots = new List<GameObject>();
+    private GameObject previewTower; // Objet temporaire pour la prévisualisation
 
     private void Start()
     {
@@ -25,32 +27,45 @@ public class InGameInventory : PlayerInventory
         }
     }
 
-    protected override void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
+    protected override void RefreshButton(int index, Button button, UnityAction clickAction)
     {
-        Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
-
-        if (index < 0 || index >= inventorySlots.Count)
-        {
-            Debug.LogWarning("Index hors des limites de la liste des slots !");
-            return;
-        }
-
-        InventoryItemData itemData = inventorySlots[index].GetComponent<InventoryItemData>();
-
-        if (tower == null)
-        {
-            itemData.SetSprite(null);
-            itemData.SetPrice(-1);
-            itemData.button.onClick.RemoveAllListeners();
-            return;
-        }
-
-        itemData.SetSprite(tower.spritesLvl[0]);
-        itemData.SetPrice(tower.baseCost);
-
-        ButtonAddListener(itemData.button, () => PlacePreviewTower(index));
+        ButtonAddListener(button, () => PlacePreviewTower(index));
     }
 
+    private void Update()
+    {
+        if (previewTower != null)
+        {
+            previewTower.transform.position = GetMouseWorldPosition();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                TryPlaceTower();
+            }
+        }
+    }
+
+    private void TryPlaceTower()
+    {
+        if (IsValidPlacement(previewTower.transform.position))
+        {
+            TowerSelectable towerSelected = previewTower.GetComponent<TowerSelectable>();
+            towerSelected.PlaceTower();
+            towerSelected.Deselect();
+            previewTower = null;
+            Debug.Log($"Tour placée : {towerSelected.tower.data.towerName}");
+        }
+        else
+        {
+            Debug.LogWarning("Position invalide pour le placement !");
+        }
+    }
+
+    private bool IsValidPlacement(Vector3 position)
+    {
+        // Ajouter des vérifications comme : zone accessible, pas d'objet bloquant, etc.
+        return true;
+    }
 
     /// <summary>
     /// Crée une tour en mode prévisualisation.
@@ -58,6 +73,33 @@ public class InGameInventory : PlayerInventory
     /// <param name="tower">Données de la tour à prévisualiser</param>
     protected void PlacePreviewTower(int indexClicked)
     {
-        Debug.Log($"Prévisualisation de la tour : {inventoryData.towers[indexClicked].towerName}");
+        if (previewTower = null)
+        {
+            return;
+        }
+
+        TowerData selectedTower = inventoryData.towers[indexClicked];
+        previewTower = Instantiate(selectedTower.objPrefabs);
+        previewTower.transform.position = GetMouseWorldPosition();
+        TowerSelectable tower = previewTower.GetComponent<TowerSelectable>();
+        tower.UnPlacedTower();
+        tower.Select();
+
+        Debug.Log($"Prévisualisation de la tour : {selectedTower.towerName}");
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject == previewTower || hit.collider.GetComponent<Tower>())
+            {
+                return previewTower.transform.position;
+            }
+
+            return hit.point + Vector3.up;
+        }
+        return Vector3.zero;
     }
 }

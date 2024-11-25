@@ -1,8 +1,10 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(TowerSelectable))]
 public class Tower : MonoBehaviour
 {
     public TowerData data;
@@ -15,9 +17,8 @@ public class Tower : MonoBehaviour
 
     public DetectionZoneDisplay zoneDisplay { get; private set; }
 
+    private TowerSelectable towerSelectable;
 
-    public bool isPlaced { get; private set; }
-    public bool isSelected { get; private set; }
 
     private void Awake()
     {
@@ -26,6 +27,9 @@ public class Tower : MonoBehaviour
         
         zoneDisplay = GetComponentInChildren<DetectionZoneDisplay>();
         Assert.IsNotNull(zoneDisplay, $"Tower {data.towerName} n'a pas de DetectionZoneDisplay");
+        
+        towerSelectable = GetComponent<TowerSelectable>();
+        Assert.IsNotNull(towerSelectable, $"Tower {data.towerName} n'a pas de TowerSelectable");
     }
 
     private void OnEnable()
@@ -45,6 +49,35 @@ public class Tower : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (!towerSelectable.isPlaced)
+        {
+            UpdatePreview();
+            return;
+        }
+
+        UpdatePlaced();
+    }
+
+    private void UpdatePreview()
+    {
+        if (IsValidPlacement(transform.position))
+        {
+            zoneDisplay.ChangeColor(Color.green);
+        }
+        else
+        {
+            zoneDisplay.ChangeColor(Color.yellow);
+        }
+    }
+
+    private bool IsValidPlacement(Vector3 position)
+    {
+        //pas d'objet bloquant, S'il est bien positionner en hauteur ou au sol.
+        return true;
+    }
+
+    private void UpdatePlaced()
     {
         fireCooldown -= Time.deltaTime;
 
@@ -86,7 +119,7 @@ public class Tower : MonoBehaviour
     }
 
 
-        private void OnEnemyEnterRange(Collider collision)
+    private void OnEnemyEnterRange(Collider collision)
     {
         if (IsEnemy(collision.gameObject) /*&& IsInRange(collision.transform)*/)
         {
@@ -111,7 +144,7 @@ public class Tower : MonoBehaviour
 
     private bool IsInRange(Transform target)
     {
-        return Vector2.Distance(transform.position, target.position) <= data.baseRange * 5;
+        return Vector2.Distance(transform.position, target.position) <= data.baseRange * 0.5;
     }
 
     private GameObject GetClosestEnemy()
@@ -135,9 +168,11 @@ public class Tower : MonoBehaviour
 
     private void Attack(GameObject enemy)
     {
+        Debug.Log($"{gameObject} Shouting");
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         Assert.IsNotNull(enemyScript, $"L'objet {enemy.name} n'a pas de script Enemy attaché.");
 
+        Debug.Log($"GameObejct : {enemy}");
         float damage = data.baseDamage;
 
         transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));

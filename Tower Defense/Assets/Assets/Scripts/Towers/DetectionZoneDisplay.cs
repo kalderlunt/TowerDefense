@@ -30,14 +30,6 @@ public class DetectionZoneDisplay : MonoBehaviour
         UpdateRangeVisual(data);
     }
 
-    public void ShowZone(TowerData data)
-    {
-        UpdateRangeVisual(data);
-
-        decalProjector.enabled = true;
-        isVisible = true;
-    }
-
     public void UpdateRangeVisual(TowerData data)
     {
         Assert.IsNotNull(data, "Tower Data not found");
@@ -46,9 +38,26 @@ public class DetectionZoneDisplay : MonoBehaviour
         decalProjector.size = new Vector3(rangeDiameter, rangeDiameter, decalProjector.size.z);
     }
 
+    public void ShowZone(TowerData data)
+    {
+        UpdateRangeVisual(data);
+
+        decalProjector.enabled = true;
+        isVisible = true;
+    }
+
     public void HideZone()
     {
         decalProjector.enabled = false;
         isVisible = false;
+    }
+
+    public void ChangeColor(Color color)
+    {
+        decalProjector.material.SetColor("_Color", color);
+    }
+    public void ResetColor()
+    {
+        decalProjector.material.SetColor("_Color", Color.white);
     }
 }

@@ -5,18 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public static PlayerInventory instance;
     public SO_Inventory inventoryData; // Référence au ScriptableObject SO_Inventory
     public TowerData selectedTower; // Tour actuellement sélectionnée
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     /// <summary>
     /// Fonction virtuelle pour remplir l'inventaire (doit être implémentée par les classes enfants).
@@ -49,7 +39,7 @@ public class PlayerInventory : MonoBehaviour
     /// </summary>
     /// <param name="tower">Données de la tour à afficher dans le slot</param>
     /// <param name="clickAction">Action à associer au clic du bouton</param>
-    protected virtual void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
+    protected void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
     {
         Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
 
@@ -72,7 +62,12 @@ public class PlayerInventory : MonoBehaviour
         itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
 
-        ButtonAddListener(itemData.button, clickAction);
+        RefreshButton(index, itemData.button, clickAction);
+    }
+
+    protected virtual void RefreshButton(int index, Button button, UnityAction clickAction)
+    {
+        ButtonAddListener(button, clickAction);
     }
 
     /// <summary>

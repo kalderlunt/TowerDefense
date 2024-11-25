@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -92,32 +93,10 @@ public class TowerSelectionMenu : PlayerInventory
         Debug.Log("L'inventaire est plein !");
     }
 
-
-    protected override void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
+    protected override void RefreshButton(int index, Button button, UnityAction clickAction)
     {
-        Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
-
-        if (index < 0 || index >= inventorySlots.Count)
-        {
-            Debug.LogWarning("Index hors des limites de la liste des slots !");
-            return;
-        }
-
-        InventoryItemData itemData = inventorySlots[index].GetComponent<InventoryItemData>();
-
-        if (tower == null)
-        {
-            itemData.SetSprite(null);
-            itemData.SetPrice(-1);
-            itemData.button.onClick.RemoveAllListeners();
-            return;
-        }
-
-        itemData.SetSprite(tower.spritesLvl[0]);
-        itemData.SetPrice(tower.baseCost);
-        ButtonAddListener(itemData.button, () => UnequipSelectedTower(index));
+        ButtonAddListener(button, () => UnequipSelectedTower(index));
     }
-
 
     private void EquipSelectedTower()
     {

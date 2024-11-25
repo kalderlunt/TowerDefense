@@ -1,11 +1,12 @@
 using NUnit.Framework;
 using UnityEngine;
 
+[RequireComponent(typeof(Tower))]
 public class TowerSelectable : MonoBehaviour, ISelectable
 {
     public bool isPlaced { get; private set; }
     public bool isSelected { get; private set; }
-    private Tower tower;
+    public Tower tower { get; private set; }
 
     private void OnEnable()
     {
@@ -15,7 +16,6 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isPlaced = false;
         isSelected = false;
     }
-
 
     public void Select()
     {
@@ -67,10 +67,14 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         transform.position = mouseWorldPosition;
     }
 
-    private void PlaceTower()
+    public void PlaceTower()
     {
-
-
         isPlaced = true;
+    }
+
+    public void UnPlacedTower()
+    {
+        // remettre dans le pool system
+        isPlaced = false;
     }
 }
