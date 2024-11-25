@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Patrol
+  m_EditorClassIdentifier: 
+  towerName: Patrol
+  level: 0
+  unlockCost: 4000
+  baseCost: 400
+  baseCellingPrice: 133
+  type: 0
+  placement: 0
+  baseDamage: 0
+  bulletsOfNumber: 1
+  damage: 1
+  damageType: 0
+  baseFirerate: 0
+  rangeInfo: 1
+  baseRange: 0
+  hiddenDetection: 1
+  leadDetection: 1
+  flyingDetection: 0
+  immunities: 0
+  placementFootprint: 2
+  purchaseState: 0
+  spritesLvl:
+  - {fileID: 21300000, guid: 699f7379dda366f4aa6ad40f9132aaf8, type: 3}
+  - {fileID: 21300000, guid: e1a78476a75bc5f4e864bd8bc8015004, type: 3}
+  - {fileID: 21300000, guid: ec20fd151c8409c4aa0f94d62f3979e4, type: 3}
+  - {fileID: 21300000, guid: 32ff5f59210b1d84daeeb73eda1384da, type: 3}
+  - {fileID: 21300000, guid: 30cf79034f9019447a38a7453060d2ec, type: 3}
+  objPrefabs: {fileID: 6389918363177477773, guid: a187dc20c1bd638429d538125c7f7b1b, type: 3}
+  test:
+    serializedVersion: 2
+    m_Bits: 0

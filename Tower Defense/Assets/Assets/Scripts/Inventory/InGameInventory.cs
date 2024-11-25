@@ -46,8 +46,9 @@ public class InGameInventory : PlayerInventory
             return;
         }
 
-        itemData.SetSprite(tower.sprite);
+        itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
+
         itemData.button.onClick.RemoveAllListeners();
         itemData.button.onClick.AddListener(() => PlacePreviewTower(index));
     }

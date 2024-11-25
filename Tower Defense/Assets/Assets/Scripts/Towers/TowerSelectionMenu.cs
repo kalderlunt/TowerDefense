@@ -113,7 +113,7 @@ public class TowerSelectionMenu : PlayerInventory
             return;
         }
 
-        itemData.SetSprite(tower.sprite);
+        itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
         itemData.button.onClick.RemoveAllListeners();
         itemData.button.onClick.AddListener(() => UnequipSelectedTower(index));
@@ -153,9 +153,9 @@ public class TowerSelectionMenu : PlayerInventory
             buttonData.SetName(tower.towerName);
             ButtonAddListener(buttonData.button, () => SelectTower(tower));
 
-            if (tower.sprite != null)
+            if (tower.spritesLvl[0] != null)
             {
-                buttonData.SetSprite(tower.sprite);
+                buttonData.SetSprite(tower.spritesLvl[0]);
             }
 
             if (tower == towers[0])
@@ -191,9 +191,9 @@ public class TowerSelectionMenu : PlayerInventory
 
     private void UpdateSprite()
     {
-        if (selectedTower.sprite != null)
+        if (selectedTower.spritesLvl[0] != null)
         {
-            towerIconSprite.sprite = selectedTower.sprite;
+            towerIconSprite.sprite = selectedTower.spritesLvl[0];
         }
     }
 

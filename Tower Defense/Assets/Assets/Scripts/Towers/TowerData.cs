@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "Tower Defense/Tower")]
@@ -36,7 +37,11 @@ public class TowerData : ScriptableObject
     public PurchaseState purchaseState; // si le joueur peut acheter 
 
     [Header("Menu Selection")]
-    public Sprite sprite; // Optionnel, pour afficher l'icône sur le bouton
+    public List<Sprite> spritesLvl; // Optionnel, pour afficher l'icône sur le bouton
+
+    [Header("In Game")]
+    public GameObject objPrefabs;
+    public LayerMask test; 
 }
 
 
@@ -99,12 +104,14 @@ public enum Immunities
 {
     None,
     Stun,
+    Debuff,
 }
 
 public enum FootPrint
 {
     NotApplicable,
     Average,
+    VeryLarge,
 }
 
 public enum PurchaseState

@@ -69,7 +69,7 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
 
-        itemData.SetSprite(tower.sprite);
+        itemData.SetSprite(tower.spritesLvl[0]);
         itemData.SetPrice(tower.baseCost);
 
         ButtonAddListener(itemData.button, clickAction);

@@ -32,4 +32,10 @@ MonoBehaviour:
   immunities: 0
   placementFootprint: 1
   purchaseState: 1
-  sprite: {fileID: 21300000, guid: c9965fc86a2aac648a47e39c99f5c219, type: 3}
+  spritesLvl:
+  - {fileID: 21300000, guid: c9965fc86a2aac648a47e39c99f5c219, type: 3}
+  - {fileID: 21300000, guid: b00594d2c0338864592317bf3ce8347a, type: 3}
+  - {fileID: 21300000, guid: 4b29bb800b2b7714cad5dff4891ea2f3, type: 3}
+  - {fileID: 21300000, guid: cf2417a03830e7a4597080f53c761806, type: 3}
+  - {fileID: 21300000, guid: 4299e03bc189c9144b7b1f1c1df500dd, type: 3}
+  objPrefabs: {fileID: 1048399473129671079, guid: 5940972202bbe0b458a7ab69aacecd77, type: 3}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Fragger
+  m_EditorClassIdentifier: 
+  towerName: Fragger
+  level: 0
+  unlockCost: 0
+  baseCost: 0
+  baseCellingPrice: 0
+  type: 0
+  placement: 0
+  baseDamage: 0
+  bulletsOfNumber: 1
+  damage: 0
+  damageType: 0
+  baseFirerate: 0
+  rangeInfo: 0
+  baseRange: 0
+  hiddenDetection: 0
+  leadDetection: 0
+  flyingDetection: 0
+  immunities: 0
+  placementFootprint: 0
+  purchaseState: 0
+  spritesLvl:
+  - {fileID: 21300000, guid: 7378658927b1da84c8be5bd9b0c10a10, type: 3}
+  - {fileID: 21300000, guid: 8f29fbc7a12dddd4f8bc681dae249508, type: 3}
+  - {fileID: 21300000, guid: b4d235b02fd06c945a4b6b395945bcca, type: 3}
+  - {fileID: 21300000, guid: 2fe89178bf13efb4f92177596e9a39b9, type: 3}
+  - {fileID: 21300000, guid: 481baea69582ecd41ae71a05455d7f6e, type: 3}
+  objPrefabs: {fileID: 0}
