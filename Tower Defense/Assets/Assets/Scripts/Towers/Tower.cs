@@ -144,7 +144,7 @@ public class Tower : MonoBehaviour
 
     private bool IsInRange(Transform target)
     {
-        return Vector2.Distance(transform.position, target.position) <= data.baseRange * 0.5;
+        return enemiesInRange.Contains(target.gameObject);
     }
 
     private GameObject GetClosestEnemy()
