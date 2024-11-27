@@ -41,4 +41,4 @@ MonoBehaviour:
   objPrefabs: {fileID: 1048399473129671079, guid: 5940972202bbe0b458a7ab69aacecd77, type: 3}
   test:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 228
