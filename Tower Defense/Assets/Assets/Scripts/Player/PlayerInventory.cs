@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
     /// <param name="clickAction">Action à associer au clic du bouton</param>
     protected void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
     {
-        Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
+        //Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
 
         if (index < 0 || index >= inventorySlots.Count)
         {
