@@ -3,6 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float hpMax = 100;
+    [SerializeField] private string nextScene = "Menu";
     [HideInInspector] public float lerpTimer;
     
     public float healthMax { get; private set; }
@@ -43,7 +44,11 @@ public class Health : MonoBehaviour
     {
         lerpTimer = 0;
         
-        
         healthPoint -= ammount;
+
+        if (healthPoint <= 0)
+        {
+            MenuManager.instance.ChangeSceneBy(nextScene);
+        }
     }
 }

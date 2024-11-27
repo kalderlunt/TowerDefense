@@ -39,6 +39,10 @@ public class TowerSelectionMenu : PlayerInventory
     [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué pour les éléments de l'
     private List<GameObject> inventorySlots = new List<GameObject>(5);
 
+    [Header("Credits")]
+    [SerializeField] private CreditsDisplay creditsDisplay;
+
+
 
     void Start()
     {
@@ -185,6 +189,7 @@ public class TowerSelectionMenu : PlayerInventory
             ButtonAddListener(purchaseButton, EquipSelectedTower);
             purchaseButtonColor.color = unlockButtonColor;
             lockCreditImage.SetActive(false);
+            creditsDisplay.RefreshText();
             return;
         }
         
