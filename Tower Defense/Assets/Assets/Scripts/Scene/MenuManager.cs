@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     {
         if (instance != null)
         {
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
         }
 
         instance = this;
