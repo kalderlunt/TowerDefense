@@ -70,7 +70,7 @@ public class InGameInventory : PlayerInventory
     /// <summary>
     /// Crée une tour en mode prévisualisation.
     /// </summary>
-    /// <param name="indexClicked">Données de la tour à prévisualiser</param>
+    /// <param name="tower">Données de la tour à prévisualiser</param>
     protected void PlacePreviewTower(int indexClicked)
     {
         if (previewTower = null)

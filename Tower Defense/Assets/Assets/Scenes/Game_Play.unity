@@ -1440,6 +1440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975374334}
+  - component: {fileID: 1975374335}
   m_Layer: 0
   m_Name: MoneyManager
   m_TagString: Untagged
@@ -1462,6 +1463,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 538976787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1975374335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975374333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0313414041236f94eac708f611f9bfc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyStart: 400
 --- !u!4 &1987788733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1115111975759828042, guid: 5baa9eb761eecd24896f06478c63c598, type: 3}
@@ -2193,6 +2207,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5163722521018751921, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_fontSize
+      value: 23.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163722521018751921, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7179366111562847376, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
       propertyPath: m_Color.b
       value: 0.31025273
@@ -2208,6 +2230,22 @@ PrefabInstance:
     - target: {fileID: 7219656458151012923, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
       propertyPath: m_Name
       value: Game Info Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487089946151276204, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 283.721
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487089946151276204, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35.573
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487089946151276204, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849246058368283490, guid: 9ae1cb6cd5593f346b62cb2b51bc13dc, type: 3}
+      propertyPath: m_Name
+      value: MoneyText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
