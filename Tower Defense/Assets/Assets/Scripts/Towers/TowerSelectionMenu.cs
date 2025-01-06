@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using TMPro;
@@ -12,19 +13,19 @@ public class TowerSelectionMenu : PlayerInventory
 
     [Space(30)]
     [SerializeField] Transform towerButtonContainer; // Conteneur pour les boutons des tours
-    [SerializeField] private GameObject towerButtonPrefab; // Préfabriqué pour les boutons des tours
+    [SerializeField] private GameObject towerButtonPrefab; // Prï¿½fabriquï¿½ pour les boutons des tours
 
     [Header("Info Side (Right Side)")]
     [SerializeField] private TMP_Text towerNameText; // Texte UI pour afficher le nom de la tour
 
-    [SerializeField] private TMP_Text towerCostText; // Texte UI pour afficher le coût de la tour
-    [SerializeField] private TMP_Text towerDamageText; // Texte UI pour afficher les dégâts de la tour
-    [SerializeField] private TMP_Text towerDamageTypeText; // Texte UI pour afficher le type de dégâts de la tour
+    [SerializeField] private TMP_Text towerCostText; // Texte UI pour afficher le coï¿½t de la tour
+    [SerializeField] private TMP_Text towerDamageText; // Texte UI pour afficher les dï¿½gï¿½ts de la tour
+    [SerializeField] private TMP_Text towerDamageTypeText; // Texte UI pour afficher le type de dï¿½gï¿½ts de la tour
 
-    [SerializeField] private TMP_Text towerRangeText; // Texte UI pour afficher la portée de la tour
+    [SerializeField] private TMP_Text towerRangeText; // Texte UI pour afficher la portï¿½e de la tour
     [SerializeField] private TMP_Text towerPlacementText; // Texte UI pour afficher le type sur lequel la tour peut se poser
 
-    [SerializeField] private Image towerIconSprite; // Image UI pour afficher l'icône de la tour
+    [SerializeField] private Image towerIconSprite; // Image UI pour afficher l'icï¿½ne de la tour
 
     [Header("Purchase Button")]
     [SerializeField] private Button purchaseButton; // Bouton pour acheter la tour
@@ -35,25 +36,27 @@ public class TowerSelectionMenu : PlayerInventory
     [SerializeField] private Color lockButtonColor; // Couleur du bouton d'achat quand il ne la pas debloque
 
     [Header("Inventory Side (Left Side)")]
-    [SerializeField] private Transform inventoryContainer; // Conteneur pour les éléments de l'inventaire
-    [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué pour les éléments de l'
+    [SerializeField] private Transform inventoryContainer; // Conteneur pour les ï¿½lï¿½ments de l'inventaire
+    [SerializeField] private GameObject inventoryItemPrefab; // Prï¿½fabriquï¿½ pour les ï¿½lï¿½ments de l'
     private List<GameObject> inventorySlots = new List<GameObject>(5);
 
     [Header("Credits")]
     [SerializeField] private CreditsDisplay creditsDisplay;
 
-
-
-    void Start()
+    private void Start()
     {
-        PopulateTowerButtons();
         PopulateInventory();
     }
 
-    private void OnDisable()
+    private void OnEnable()
+    {
+        PopulateTowerButtons();
+    }
+
+    /*private void OnDisable()
     {
         purchaseButton.onClick = null;
-    }
+    }*/
 
     #region Inventory
     protected override void PopulateInventory()
@@ -61,7 +64,7 @@ public class TowerSelectionMenu : PlayerInventory
         for (int i = 0; i < inventoryData.towers.Count; i++) 
         {
             CreateSlotInventory(inventorySlots, inventoryItemPrefab, inventoryContainer, () => UnequipSelectedTower(i));
-            // Passer l'index à la fonction de mise à jour de l'inventaire
+            // Passer l'index ï¿½ la fonction de mise ï¿½ jour de l'inventaire
             RefreshInventory(inventorySlots, i, inventoryData.towers[i], () => UnequipSelectedTower(i)); // i est l'index correct ici
         }
     }
@@ -79,7 +82,7 @@ public class TowerSelectionMenu : PlayerInventory
         }*/
         if (inventoryData.towers.Contains(tower))
         {
-            Debug.Log("Cette tour est déjà dans l'inventaire !");
+            Debug.Log("Cette tour est dï¿½jï¿½ dans l'inventaire !");
             return;
         }
 
@@ -109,16 +112,16 @@ public class TowerSelectionMenu : PlayerInventory
     private void UnequipSelectedTower(int index)
     {
         Debug.Log("Taille de l'inventaire : " + inventoryData.towers.Count);
-        Debug.Log("Index sélectionné : " + index);
+        Debug.Log("Index sï¿½lectionnï¿½ : " + index);
 
         if (index >= 0 && index < inventoryData.towers.Count)
         {
             inventoryData.towers[index] = null;
-            RefreshInventory(inventorySlots, index, null, null); // Mettre à jour l'inventaire après avoir retiré la tour
+            RefreshInventory(inventorySlots, index, null, null); // Mettre ï¿½ jour l'inventaire aprï¿½s avoir retirï¿½ la tour
         }
         else
         {
-            Debug.LogWarning("Index hors de portée : " + index);
+            Debug.LogWarning("Index hors de portï¿½e : " + index);
         }
     }
     #endregion
@@ -127,6 +130,15 @@ public class TowerSelectionMenu : PlayerInventory
     #region MarketTower
     private void PopulateTowerButtons()
     {
+            /*foreach (Transform child in towerButtonContainer)
+            {
+                Destroy(child.gameObject);
+                Debug.LogWarning($"{child} a ete supprimer!");
+            }*/
+        /*if (towerButtonContainer.childCount > 0)
+        {
+        }*/
+        
         foreach (TowerData tower in towers)
         {
             GameObject button = Instantiate(towerButtonPrefab, towerButtonContainer);
