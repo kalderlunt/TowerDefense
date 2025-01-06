@@ -8,8 +8,8 @@ public class TowerData : ScriptableObject
     public TowerLevel level;
 
     [Header("Price")]
-    public int unlockCost; // Coût pour débloquer dans le menu
-    public int baseCost; // Coût initial dans le jeu 
+    public int unlockCost; // Coï¿½t pour dï¿½bloquer dans le menu
+    public int baseCost; // Coï¿½t initial dans le jeu 
     public int baseCellingPrice; // Prix de vente de base
 
     [Header("Placement")]
@@ -17,19 +17,19 @@ public class TowerData : ScriptableObject
     public PlacementType placement; // Placement possible sur le terrain (sol, montagne, air)
 
     [Header("Parameters Damage")]
-    public float baseDamage; // Dégâts de base
+    public float baseDamage; // Dï¿½gï¿½ts de base
     public float bulletsOfNumber = 1f;
     public Damage damage; // Niveau de degat
-    public DamageType damageType; // Type de dégâts
+    public DamageType damageType; // Type de dï¿½gï¿½ts
     public float baseFirerate; // Cadence de tir de base
     public RangeInfo rangeInfo;
-    public float baseRange; // Portée de base
+    public float baseRange; // Portï¿½e de base
 
     [Header("Minimum Detection")]
-    public MinimumDetection hiddenDetection; // Détection d'ennemis invisibles (après niveau 2)
-    public MinimumDetection leadDetection; // Détection d'ennemis blindés
-    public MinimumDetection flyingDetection; // Détection d'ennemis volants
-    public Immunities immunities; // Immunité aux altérations d'état
+    public MinimumDetection hiddenDetection; // Dï¿½tection d'ennemis invisibles (aprï¿½s niveau 2)
+    public MinimumDetection leadDetection; // Dï¿½tection d'ennemis blindï¿½s
+    public MinimumDetection flyingDetection; // Dï¿½tection d'ennemis volants
+    public Immunities immunities; // Immunitï¿½ aux altï¿½rations d'ï¿½tat
 
     public FootPrint placementFootprint; // Taille approximative pour le placement
 
@@ -37,11 +37,10 @@ public class TowerData : ScriptableObject
     public PurchaseState purchaseState; // si le joueur peut acheter 
 
     [Header("Menu Selection")]
-    public List<Sprite> spritesLvl; // Optionnel, pour afficher l'icône sur le bouton
+    public List<Sprite> spritesLvl; // Optionnel, pour afficher l'icï¿½ne sur le bouton
 
     [Header("In Game")]
     public GameObject objPrefabs;
-    public LayerMask test; 
 }
 
 

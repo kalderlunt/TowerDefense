@@ -81,7 +81,7 @@ public class Tower : MonoBehaviour
     {
         fireCooldown -= Time.deltaTime;
 
-        // Supprimer les ennemis hors de portée
+        // Supprimer les ennemis hors de portï¿½e
         enemiesInRange.RemoveAll(enemy => enemy == null || !IsInRange(enemy.transform) || !enemy.activeInHierarchy);
 
         AttackByType();
@@ -94,11 +94,11 @@ public class Tower : MonoBehaviour
             switch (data.damageType)
             {
                 case DamageType.Single:
-                    Attack(enemiesInRange[0]); // Première cible
+                    Attack(enemiesInRange[0]); // Premiï¿½re cible
                     break;
 
                 /*case DamageType.Multiple:
-                    AttackMultiple(3); // Par exemple, attaque jusqu'à 3 cibles
+                    AttackMultiple(3); // Par exemple, attaque jusqu'ï¿½ 3 cibles
                     break;
 
                 case DamageType.Random:
@@ -114,7 +114,7 @@ public class Tower : MonoBehaviour
                     break;*/
             }
 
-            fireCooldown = 1f / data.baseFirerate; // Réinitialiser le cooldown
+            fireCooldown = 0.5f / data.baseFirerate; // Rï¿½initialiser le cooldown
         }
     }
 
@@ -159,7 +159,7 @@ public class Tower : MonoBehaviour
 
     private void AttackMultiple(int count)
     {
-        var targets = enemiesInRange.Take(count); // Sélectionner les X premières cibles
+        var targets = enemiesInRange.Take(count); // Sï¿½lectionner les X premiï¿½res cibles
         foreach (var target in targets)
         {
             Attack(target);
@@ -170,7 +170,7 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{gameObject} Shouting");
         Enemy enemyScript = enemy.GetComponent<Enemy>();
-        Assert.IsNotNull(enemyScript, $"L'objet {enemy.name} n'a pas de script Enemy attaché.");
+        Assert.IsNotNull(enemyScript, $"L'objet {enemy.name} n'a pas de script Enemy attachï¿½.");
 
         Debug.Log($"GameObejct : {enemy}");
         float damage = data.baseDamage;
