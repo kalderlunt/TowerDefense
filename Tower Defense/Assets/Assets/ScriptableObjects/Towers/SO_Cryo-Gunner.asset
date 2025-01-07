@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Cryo-Gunner
+  m_EditorClassIdentifier: 
+  towerName: Cryo-Gunner
+  level: 0
+  unlockCost: 1600
+  baseCost: 450
+  baseCellingPrice: 150
+  type: 2
+  placement: 0
+  baseDamage: 1
+  bulletsOfNumber: 1
+  damage: 0
+  damageType: 1
+  baseFirerate: 0.608
+  rangeInfo: 1
+  baseRange: 10
+  hiddenDetection: 4
+  leadDetection: 4
+  flyingDetection: 0
+  immunities: 0
+  placementFootprint: 1
+  purchaseState: 0
+  spritesLvl:
+  - {fileID: 21300000, guid: 888deb0843547df40a622827db5e4fbd, type: 3}
+  - {fileID: 21300000, guid: ea3aea95d371eab4cb3a9cc6f8c189cc, type: 3}
+  - {fileID: 21300000, guid: 1b66df711cce9ef4a9510a9aa2fd2379, type: 3}
+  - {fileID: 21300000, guid: d0b77af919e46824aad3db10a3412abd, type: 3}
+  - {fileID: 21300000, guid: 420811d783c75b64d962defb32480a13, type: 3}
+  objPrefabs: {fileID: 8019418959987335499, guid: 47022f2b7c7b35e43956739f6c92d630, type: 3}

@@ -1,8 +1,11 @@
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(TowerSelectable))]
 public class Tower : MonoBehaviour
 {
     public TowerData data;
@@ -11,13 +14,13 @@ public class Tower : MonoBehaviour
 
     private TowerRange towerRange;
     private float fireCooldown = 0f;
+    private int burstCount = 0;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     public DetectionZoneDisplay zoneDisplay { get; private set; }
 
+    private TowerSelectable towerSelectable;
 
-    public bool isPlaced { get; private set; }
-    public bool isSelected { get; private set; }
 
     private void Awake()
     {
@@ -26,6 +29,9 @@ public class Tower : MonoBehaviour
         
         zoneDisplay = GetComponentInChildren<DetectionZoneDisplay>();
         Assert.IsNotNull(zoneDisplay, $"Tower {data.towerName} n'a pas de DetectionZoneDisplay");
+        
+        towerSelectable = GetComponent<TowerSelectable>();
+        Assert.IsNotNull(towerSelectable, $"Tower {data.towerName} n'a pas de TowerSelectable");
     }
 
     private void OnEnable()
@@ -36,6 +42,7 @@ public class Tower : MonoBehaviour
         rangeCollider.radius = data.baseRange * 0.5f;
         enemiesInRange.Clear();
         fireCooldown = 0f;
+        burstCount = 0;
     }
 
     private void OnDisable()
@@ -46,9 +53,38 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
+        if (!towerSelectable.isPlaced)
+        {
+            UpdatePreview();
+            return;
+        }
+
+        UpdatePlaced();
+    }
+
+    private void UpdatePreview()
+    {
+        if (IsValidPlacement(transform.position))
+        {
+            zoneDisplay.ChangeColor(Color.green);
+        }
+        else
+        {
+            zoneDisplay.ChangeColor(Color.yellow);
+        }
+    }
+
+    private bool IsValidPlacement(Vector3 position)
+    {
+        //pas d'objet bloquant, S'il est bien positionner en hauteur ou au sol.
+        return true;
+    }
+
+    private void UpdatePlaced()
+    {
         fireCooldown -= Time.deltaTime;
 
-        // Supprimer les ennemis hors de portée
+        // Supprimer les ennemis hors de portï¿½e
         enemiesInRange.RemoveAll(enemy => enemy == null || !IsInRange(enemy.transform) || !enemy.activeInHierarchy);
 
         AttackByType();
@@ -61,11 +97,17 @@ public class Tower : MonoBehaviour
             switch (data.damageType)
             {
                 case DamageType.Single:
-                    Attack(enemiesInRange[0]); // Première cible
+                    SingleAttack(enemiesInRange[0]); // Premiï¿½re cible
                     break;
 
+                case DamageType.Burst:
+                    BurstAttack(enemiesInRange[0]);
+                    break;
+
+
+
                 /*case DamageType.Multiple:
-                    AttackMultiple(3); // Par exemple, attaque jusqu'à 3 cibles
+                    AttackMultiple(3); // Par exemple, attaque jusqu'ï¿½ 3 cibles
                     break;
 
                 case DamageType.Random:
@@ -80,13 +122,17 @@ public class Tower : MonoBehaviour
                     Attack(GetFarthestEnemy());
                     break;*/
             }
-
-            fireCooldown = 1f / data.baseFirerate; // Réinitialiser le cooldown
         }
     }
 
+    private void ResetFireCooldown()
+    {
+        fireCooldown = data.baseFirerate; // Rï¿½initialiser le cooldown
+    }
 
-        private void OnEnemyEnterRange(Collider collision)
+
+    #region Conditions
+    private void OnEnemyEnterRange(Collider collision)
     {
         if (IsEnemy(collision.gameObject) /*&& IsInRange(collision.transform)*/)
         {
@@ -111,7 +157,7 @@ public class Tower : MonoBehaviour
 
     private bool IsInRange(Transform target)
     {
-        return Vector2.Distance(transform.position, target.position) <= data.baseRange * 5;
+        return enemiesInRange.Contains(target.gameObject);
     }
 
     private GameObject GetClosestEnemy()
@@ -123,25 +169,58 @@ public class Tower : MonoBehaviour
     {
         return enemiesInRange.OrderByDescending(e => Vector2.Distance(transform.position, e.transform.position)).FirstOrDefault();
     }
-
+    #endregion
+    
+    #region AttackType
     private void AttackMultiple(int count)
     {
-        var targets = enemiesInRange.Take(count); // Sélectionner les X premières cibles
+        var targets = enemiesInRange.Take(count); // Sï¿½lectionner les X premiï¿½res cibles
         foreach (var target in targets)
         {
-            Attack(target);
+            SingleAttack(target);
         }
     }
 
-    private void Attack(GameObject enemy)
+    private void Attack(GameObject enemyTarget)
     {
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-        Assert.IsNotNull(enemyScript, $"L'objet {enemy.name} n'a pas de script Enemy attaché.");
-
-        float damage = data.baseDamage;
-
-        transform.LookAt(new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
-        enemyScript.TakeDamage(damage, data.damageType);
-        // Play Sound
+        //Debug.Log($"{gameObject} Shouting");
+        Enemy enemyScript = enemyTarget.GetComponent<Enemy>();
+        Assert.IsNotNull(enemyScript, $"L'objet {enemyTarget.name} n'a pas de script Enemy attachï¿½.");
+        
+        transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
+        enemyScript.TakeDamage(data.baseDamage, data.damageType);
+        ResetFireCooldown();
+        
+        //Play Sound
+        //AudioManager.instance.PlaySfx(data.attackSound);
     }
+
+    private void SingleAttack(GameObject enemyTarget)
+    {
+        Attack(enemyTarget);
+    }
+    
+    private void BurstAttack(GameObject enemyTarget)
+    {
+        if (!enemyTarget) return;
+        if (burstCount > 0) return;
+        StartCoroutine(PerformBurstAttack(enemyTarget));
+    }
+    
+    private IEnumerator PerformBurstAttack(GameObject enemyTarget)
+    {
+        burstCount = data.burstMaxBullets;
+        for (int i = 0; i < data.burstMaxBullets; i++)
+        {
+            if (!enemyTarget) yield break;
+            burstCount--;
+            Attack(enemyTarget);
+            
+            ////Play Sound
+            //AudioManager.instance.PlaySfx(data.attackSound);
+            
+            yield return new WaitForSeconds(data.burstDelay);
+        }
+    }
+    #endregion
 }

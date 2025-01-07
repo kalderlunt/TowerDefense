@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "Tower Defense/Tower")]
@@ -7,8 +9,8 @@ public class TowerData : ScriptableObject
     public TowerLevel level;
 
     [Header("Price")]
-    public int unlockCost; // Coût pour débloquer dans le menu
-    public int baseCost; // Coût initial
+    public int unlockCost; // Cout pour debloquer dans le menu
+    public int baseCost; // Cout initial dans le jeu 
     public int baseCellingPrice; // Prix de vente de base
 
     [Header("Placement")]
@@ -16,24 +18,38 @@ public class TowerData : ScriptableObject
     public PlacementType placement; // Placement possible sur le terrain (sol, montagne, air)
 
     [Header("Parameters Damage")]
-    public float baseDamage; // Dégâts de base
+    public float baseDamage; // Degets de base
     public float bulletsOfNumber = 1f;
     public Damage damage; // Niveau de degat
-    public DamageType damageType; // Type de dégâts
+    public DamageType damageType; // Type de degets
     public float baseFirerate; // Cadence de tir de base
     public RangeInfo rangeInfo;
-    public float baseRange; // Portée de base
+    public float baseRange; // Portee de base
+    
+    [Header("Burst Settings")]
+    [SerializeField]
+    public int burstMaxBullets = 3;
+    public float burstDelay = 0.5f;
 
     [Header("Minimum Detection")]
-    public MinimumDetection hiddenDetection; // Détection d'ennemis invisibles (après niveau 2)
-    public MinimumDetection leadDetection; // Détection d'ennemis blindés
-    public MinimumDetection flyingDetection; // Détection d'ennemis volants
-    public Immunities immunities; // Immunité aux altérations d'état
+    public MinimumDetection hiddenDetection; // Detection d'ennemis invisibles (apres niveau 2)
+    public MinimumDetection leadDetection; // Detection d'ennemis blindes
+    public MinimumDetection flyingDetection; // Detection d'ennemis volants
+    public Immunities immunities; // Immunite aux alterations d'etat
 
     public FootPrint placementFootprint; // Taille approximative pour le placement
 
+    [Header("Locked / Unlock")]
+    public PurchaseState purchaseState; // si le joueur peut acheter 
+
     [Header("Menu Selection")]
-    public Sprite buttonSprite; // Optionnel, pour afficher l'icône sur le bouton
+    public List<Sprite> spritesLvl; // Optionnel, pour afficher l'icone sur le bouton
+
+    [Header("In Game")]
+    public GameObject objPrefabs;
+    
+    
+    private bool IsBurstDamage() => damageType == DamageType.Burst;
 }
 
 
@@ -46,7 +62,8 @@ public enum PlacementType
 
 public enum TowerType 
 { 
-    Offensive, 
+    Offensive,
+    Economy,
     Support 
 }
 
@@ -55,10 +72,12 @@ public enum Damage
     Low,
     Medium,
     High,
+    GeneratesMoney,
 }
 
-public enum DamageType 
+public enum DamageType
 {
+    NotApplicable,
     Single,
     Burst,
     PierceSpread,
@@ -67,6 +86,7 @@ public enum DamageType
 
 public enum RangeInfo
 {
+    NotApplicable,
     Low,
     Medium,
     High,
@@ -96,10 +116,19 @@ public enum Immunities
 {
     None,
     Stun,
+    Debuff,
 }
 
 public enum FootPrint
 {
     NotApplicable,
+    AboveAverange,
     Average,
+    VeryLarge,
+}
+
+public enum PurchaseState
+{
+    Locked,
+    Unlocked,
 }
