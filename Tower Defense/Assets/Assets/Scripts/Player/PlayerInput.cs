@@ -34,7 +34,7 @@ public class PlayerInput : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red, 1);
             
             GameObject newTarget = hit.collider.gameObject;
-
+            
             if (newTarget.GetComponent<Tower>())
             {
                 if (targetSelected == newTarget)

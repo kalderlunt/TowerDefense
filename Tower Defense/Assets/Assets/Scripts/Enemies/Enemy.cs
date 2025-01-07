@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyData))]
 public class Enemy : MonoBehaviour, IPooledObject<Enemy>
 {
-    EnemyData data;
+    private EnemyData data;
 
     private Pool<Enemy> pool;
     public event Action onDeath;
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IPooledObject<Enemy>
         data = GetComponent<EnemyData>();
     }
 
-    public void TakeDamage(float damage, DamageType damageType)
+    public void TakeDamage(float damage)
     {
         data.health -= damage;
 
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IPooledObject<Enemy>
 
     private void Die()
     {
-        //Debug.Log($"{name} a été détruit !");
+        //Debug.Log($"{name} a ï¿½tï¿½ dï¿½truit !");
         //Destroy(gameObject);
         onDeath?.Invoke();
         onDeath = null;    // Nettoyage des abonnements
