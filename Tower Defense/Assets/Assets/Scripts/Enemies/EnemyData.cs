@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyData : MonoBehaviour
 {
-    public float health;
+    [HideInInspector] public float health;
     public float maxHealth;
 
     public float moveSpeed;
