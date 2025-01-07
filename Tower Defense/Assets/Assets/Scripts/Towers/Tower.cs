@@ -187,8 +187,9 @@ public class Tower : MonoBehaviour
         Enemy enemyScript = enemyTarget.GetComponent<Enemy>();
         Assert.IsNotNull(enemyScript, $"L'objet {enemyTarget.name} n'a pas de script Enemy attach�.");
         
-        transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
-        enemyScript.TakeDamage(data.baseDamage, data.damageType);
+        if (data.damageType != DamageType.NotApplicable)
+            transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
+        enemyScript.TakeDamage(data.baseDamage);
         ResetFireCooldown();
         
         //Play Sound
@@ -206,7 +207,6 @@ public class Tower : MonoBehaviour
         if (burstCount > 0) return;
         StartCoroutine(PerformBurstAttack(enemyTarget));
     }
-    
     private IEnumerator PerformBurstAttack(GameObject enemyTarget)
     {
         burstCount = data.burstMaxBullets;
@@ -222,5 +222,11 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(data.burstDelay);
         }
     }
+
+    private void SpawnPatrol()
+    {
+        
+    }
+    
     #endregion
 }
