@@ -13,17 +13,15 @@ namespace Assets.Editor__Editor_.Scripts
 
             // Début du bloc modifiable
             serializedObject.Update();
-            
-            // Affichage conditionnel pour Burst Settings
-            if (towerData.damageType == DamageType.Burst)
-            {
-                EditorGUILayout.LabelField("Burst Settings", EditorStyles.boldLabel);
-                //towerData.burstCount = EditorGUILayout.IntField("Burst Count", towerData.burstCount);
-                towerData.burstMaxBullets = EditorGUILayout.IntField("Burst Max Bullets", towerData.burstMaxBullets);
-                towerData.burstDelay = EditorGUILayout.FloatField("Burst Delay", towerData.burstDelay);
-                EditorGUILayout.Space(20);
-            }
 
+            switch (towerData.damageType)
+            {
+                case DamageType.Burst:
+                    BurstSettings(towerData);
+                    break;
+            }
+            EditorGUILayout.Space(30);
+            
             DrawPropertiesExcluding(
                 serializedObject,
                 "burstDelay",
@@ -34,5 +32,17 @@ namespace Assets.Editor__Editor_.Scripts
             // Fin du bloc modifiable
             serializedObject.ApplyModifiedProperties();
         }
+
+        #region Settings
+        private void BurstSettings(TowerData towerData)
+        {
+            EditorGUILayout.LabelField("Burst Settings", EditorStyles.boldLabel);
+            //towerData.burstCount = EditorGUILayout.IntField("Burst Count", towerData.burstCount);
+            towerData.burstMaxBullets = EditorGUILayout.IntField("Burst Max Bullets", towerData.burstMaxBullets);
+            towerData.burstDelay = EditorGUILayout.FloatField("Burst Delay", towerData.burstDelay);
+        }
+        
+        
+        #endregion
     }
 }
