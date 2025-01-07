@@ -45,6 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
+  - waveName: Begining
+    enemies: []
+  - waveName: Wave 0
+    enemies:
+    - enemyPrefab: {fileID: 3251825396150887082, guid: 05922bcedd9bdaa42bd5aad163034adf, type: 3}
+      count: 15
+      spawnInterval: 0.6
   - waveName: Wave 1
     enemies:
     - enemyPrefab: {fileID: 3007337936233099023, guid: b5b8eb5e6d37d3240aa4b0d7f3587db6, type: 3}
@@ -58,4 +65,18 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 3251825396150887082, guid: 05922bcedd9bdaa42bd5aad163034adf, type: 3}
       count: 5
       spawnInterval: 0.5
+  - waveName: Wave 3
+    enemies:
+    - enemyPrefab: {fileID: 3007337936233099023, guid: b5b8eb5e6d37d3240aa4b0d7f3587db6, type: 3}
+      count: 5
+      spawnInterval: 0.5
+    - enemyPrefab: {fileID: 3251825396150887082, guid: 05922bcedd9bdaa42bd5aad163034adf, type: 3}
+      count: 5
+      spawnInterval: 0.5
+    - enemyPrefab: {fileID: 3007337936233099023, guid: b5b8eb5e6d37d3240aa4b0d7f3587db6, type: 3}
+      count: 15
+      spawnInterval: 1
+    - enemyPrefab: {fileID: 3251825396150887082, guid: 05922bcedd9bdaa42bd5aad163034adf, type: 3}
+      count: 10
+      spawnInterval: 1.5
   WaveInterval: 15
