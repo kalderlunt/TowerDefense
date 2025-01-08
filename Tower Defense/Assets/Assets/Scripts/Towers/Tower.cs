@@ -96,24 +96,18 @@ public class Tower : MonoBehaviour
 
     private void AttackByType()
     {
-        if (fireCooldown <= 0f && enemiesInRange.Count > 0)
+        if (fireCooldown > 0f) return;
+        if (enemiesInRange.Count > 0)
         {
             switch (data.damageType)
             {
-                case DamageType.Single:
+                case DamageType.Single :
                     SingleAttack(enemiesInRange[0]); // Premi�re cible
                     break;
 
                 case DamageType.Burst:
                     BurstAttack(enemiesInRange[0]);
                     break;
-                
-                case DamageType.NotApplicable:
-                    NotApplicableAttack();
-                    break;
-                    
-
-
 
                 /*case DamageType.Multiple:
                     AttackMultiple(3); // Par exemple, attaque jusqu'� 3 cibles
@@ -130,6 +124,15 @@ public class Tower : MonoBehaviour
                 case DamageType.Farthest:
                     Attack(GetFarthestEnemy());
                     break;*/
+            }
+        }
+        else
+        {
+            switch (data.damageType)
+            {
+                case DamageType.NotApplicable:
+                NotApplicableAttack();
+                break;
             }
         }
     }
@@ -237,10 +240,12 @@ public class Tower : MonoBehaviour
         switch (data.tower)
         {
             case TowerClass.Patrol:
-                //GetComponent<PatrolSpawner>().Spawn();
+                GetComponent<PatrolSpawner>().Spawn();
                 //EventManager.instance.onSpawnPatrol?.Invoke();
                 break;
         }
+        
+        ResetFireCooldown();
     }
     
     #endregion

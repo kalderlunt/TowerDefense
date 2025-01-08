@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("Toutes les vagues ont �t� compl�t�es !");
+        Debug.Log("Toutes les vagues ont ete completees !");
     }
 
     private IEnumerator SpawnWaveEnemies(EnemyWave wave)

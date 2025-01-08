@@ -15,7 +15,7 @@ namespace Assets.Scripts.Data
         public float moveSpeed;
         [HideInInspector] public Transform transform;
         
-        public void ResetData()
+        public void ResetHealth()
         {
             health = maxHealth;
         }

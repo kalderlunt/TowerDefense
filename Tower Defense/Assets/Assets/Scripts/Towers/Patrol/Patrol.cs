@@ -5,11 +5,11 @@ using UnityEngine;
 namespace Assets.Scripts.Towers.Patrol
 {
     [RequireComponent(typeof(PatrolMovement))]
-    public class Patrol : MonoBehaviour, IPooledObject<Patrol>
+    public class Patrol : MonoBehaviour//, IPooledObject<Patrol>
     {
         private PatrolData data;
-        private Pool<Patrol> pool;
-        public event Action onDeath;
+        //private Pool<Patrol> pool;
+        public event Action onDestroyPatrol;
 
         public void TakeDamage(float damage)
         {
@@ -21,14 +21,14 @@ namespace Assets.Scripts.Towers.Patrol
             }
         }
         
-        public void SetPool(Pool<Patrol> pool)
+        /*public void SetPool(Pool<Patrol> pool)
         {
             this.pool = pool;
-        }
+        }*/
 
         public void ResetData(PatrolData data)
         {
-            data.ResetData();
+            data.ResetHealth();
         }
 
         public PatrolData GetData()
@@ -36,10 +36,15 @@ namespace Assets.Scripts.Towers.Patrol
             return data;
         }
 
+        public void SetData(PatrolData data)
+        {
+            this.data = data;
+        }
+
         private void DestroyPatrol()
         {
-            onDeath?.Invoke();
-            onDeath = null;
+            onDestroyPatrol?.Invoke();
+            onDestroyPatrol = null;
         }
     }
 }

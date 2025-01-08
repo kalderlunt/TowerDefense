@@ -10,29 +10,29 @@ namespace Assets.Scripts.Spawners
     public class PatrolSpawner : MonoBehaviour, ISpawner
     {
         [SerializeField] private PatrolData data;
-        private Patrol patrol;
-        private Transform parentStorage;
-        private Dictionary<GameObject, ComponentPool<Patrol>> patrolPools;
+        [SerializeField] private Transform parentStorage;
+        //private Dictionary<GameObject, ComponentPool<Patrol>> patrolPools;
 
-        private void Start()
+        private void Awake()
         {
-            patrolPools = new Dictionary<GameObject, ComponentPool<Patrol>>();
-            parentStorage = transform;
-
-            patrolPools[data.patrolPrefab] = new ComponentPool<Patrol>(
+            //patrolPools = new Dictionary<GameObject, ComponentPool<Patrol>>();
+            
+            /*patrolPools[data.patrolPrefab] = new ComponentPool<Patrol>(
                 prefab: data.patrolPrefab,
                 capacity: 6,
                 preAllocateCount: 6, // Pre-allocation
-                parentStorage: this.parentStorage
-            );
+                parentStorage: parentStorage
+            );*/
         }
 
         public void Spawn()
         {
-            Debug.Log("Patrol Spawned");
-            patrol = patrolPools[data.patrolPrefab].Get();
+            //Patrol patrol = patrolPools[data.patrolPrefab].Get();
+            //patrol.onDeath += () => patrolPools[data.patrolPrefab].Release(patrol);
+            Patrol patrol = Instantiate(data.patrolPrefab, parentStorage).GetComponent<Patrol>();
+            patrol.SetData(data);
             patrol.ResetData(data);
-            patrol.onDeath += () => patrolPools[data.patrolPrefab].Release(patrol);
+            patrol.onDestroyPatrol += () => Destroy(patrol.gameObject);
         }
     }
 }

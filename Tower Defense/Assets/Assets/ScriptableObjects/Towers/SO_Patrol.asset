@@ -24,7 +24,7 @@ MonoBehaviour:
   bulletsOfNumber: 1
   damage: 1
   damageType: 0
-  baseFirerate: 0
+  baseFirerate: 40
   rangeInfo: 1
   baseRange: 1.5
   burstMaxBullets: 3

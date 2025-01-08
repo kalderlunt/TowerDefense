@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Data;
 using UnityEngine;
 
@@ -19,20 +20,20 @@ namespace Assets.Scripts.Towers.Patrol
         {
             Debug.Log("Enable PatrolMovement");
             waypoints = WaypointManager.instance.waypoints;
-            currentWaypointIndex = waypoints.Length;
+            currentWaypointIndex = waypoints.Length - 1;
             transform.position = waypoints[currentWaypointIndex].position;
         }
 
         private void Update()
         {
-            if (currentWaypointIndex <= waypoints.Length) return;
+            if (waypoints.Length <= currentWaypointIndex) return;
 
-            Vector3 targetPosition = new (waypoints[currentWaypointIndex].position.x, data.transform.position.y, waypoints[currentWaypointIndex].position.z);
+            Vector3 targetPosition = new (waypoints[currentWaypointIndex].position.x, transform.position.y, waypoints[currentWaypointIndex].position.z);
 
-            data.transform.LookAt(new Vector3(targetPosition.x, data.transform.position.y, targetPosition.z));
-            transform.position = Vector3.MoveTowards(data.transform.position, targetPosition, data.moveSpeed * Time.deltaTime);
+            data.transform.LookAt(new Vector3(targetPosition.x, transform.position.y, targetPosition.z));
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, data.moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(data.transform.position, targetPosition) < 0.1f)
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 currentWaypointIndex--;
             }

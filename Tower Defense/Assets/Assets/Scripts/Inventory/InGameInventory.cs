@@ -54,7 +54,7 @@ public class InGameInventory : PlayerInventory
             towerSelected.PlaceTower();
             towerSelected.Deselect();
             previewTower = null;
-            Debug.Log($"Tour plac�e : {towerSelected.tower.data.towerName}");
+            Debug.Log($"Tour placee : {towerSelected.tower.data.towerName}");
         }
         else
         {
