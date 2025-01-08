@@ -251,6 +251,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ace20eb1-cf5c-46ea-9c30-2004a4949376
     m_ActionName: Player/MousePosition
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5493344509237544907}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: CancelPlaceTower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 66c50953-fe4b-4a9e-8afc-a32bb3a5cba3
+    m_ActionName: 'Player/CancelPlaceTower[/Keyboard/x]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -283,8 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7a6fc4d4ad7a549828b8f7b280adcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hphMax: 100
-  lerpTimer: 1
+  hpMax: 100
+  nextScene: Menu
+  lerpTimer: 0
 --- !u!1 &6381148968246743804
 GameObject:
   m_ObjectHideFlags: 0
