@@ -1,3 +1,5 @@
+using System;
+using Assets.Scripts.Managers;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -9,6 +11,11 @@ public class TowerSelectable : MonoBehaviour, ISelectable
     public bool isSelected { get; private set; }
 
     public Tower tower { get; private set; }
+
+    private void Start()
+    {
+        EventManager.instance.onCancelPlaceTower.AddListener(CancelPlaceTower);
+    }
 
     private void OnEnable()
     {
@@ -69,10 +76,17 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         transform.position = mouseWorldPosition;
     }
 
+    private void CancelPlaceTower()
+    {
+        Destroy(tower.gameObject);
+    }
+    
+
     public void PlaceTower()
     {
         isPlaced = true;
         colliderYouCanClickOn.enabled = true;
+        EventManager.instance.onCancelPlaceTower.RemoveListener(CancelPlaceTower);
     }
 
     public void UnPlacedTower()

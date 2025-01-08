@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Assets.Scripts.Managers;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -101,6 +102,14 @@ public class PlayerInput : MonoBehaviour
 
         mousePosition = context.ReadValue<Vector2>();
         //Debug.Log($"mouse World Position : {mouseWorldPosition}");
+    }
+
+    public void CancelPlaceTower(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EventManager.instance.onCancelPlaceTower?.Invoke();
+        }
     }
 
 

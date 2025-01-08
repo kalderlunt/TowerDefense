@@ -27,7 +27,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -90,6 +90,15 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "6ffecb7e-5286-4399-a22d-e57fa7005801",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CancelPlaceTower",
+                    "type": "Button",
+                    "id": "66c50953-fe4b-4a9e-8afc-a32bb3a5cba3",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -508,6 +517,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6e3b5be-c222-44f7-8c73-0a63b99cc228",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "CancelPlaceTower",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
