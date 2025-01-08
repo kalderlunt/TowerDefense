@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class InGameInventory : PlayerInventory
 {
-    [SerializeField] private GameObject inventoryItemPrefab; // Préfabriqué des slots d'inventaire
+    [SerializeField] private GameObject inventoryItemPrefab; // Prï¿½fabriquï¿½ des slots d'inventaire
     [SerializeField] private Transform inventoryContainer; // Conteneur des slots d'inventaire
+    [SerializeField] private Transform parentStorage;
     private List<GameObject> inventorySlots = new List<GameObject>();
-    private GameObject previewTower; // Objet temporaire pour la prévisualisation
+    private GameObject previewTower; // Objet temporaire pour la prï¿½visualisation
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class InGameInventory : PlayerInventory
     }
 
     /// <summary>
-    /// Remplit l'inventaire avec les données des tours.
+    /// Remplit l'inventaire avec les donnï¿½es des tours.
     /// </summary>
     protected override void PopulateInventory()
     {
@@ -53,7 +54,7 @@ public class InGameInventory : PlayerInventory
             towerSelected.PlaceTower();
             towerSelected.Deselect();
             previewTower = null;
-            Debug.Log($"Tour placée : {towerSelected.tower.data.towerName}");
+            Debug.Log($"Tour placee : {towerSelected.tower.data.towerName}");
         }
         else
         {
@@ -63,14 +64,14 @@ public class InGameInventory : PlayerInventory
 
     private bool IsValidPlacement(Vector3 position)
     {
-        // Ajouter des vérifications comme : zone accessible, pas d'objet bloquant, etc.
+        // Ajouter des vï¿½rifications comme : zone accessible, pas d'objet bloquant, etc.
         return true;
     }
 
     /// <summary>
-    /// Crée une tour en mode prévisualisation.
+    /// Crï¿½e une tour en mode prï¿½visualisation.
     /// </summary>
-    /// <param name="indexClicked">Données de la tour à prévisualiser</param>
+    /// <param name="indexClicked">Donnï¿½es de la tour ï¿½ prï¿½visualiser</param>
     protected void PlacePreviewTower(int indexClicked)
     {
         if (previewTower = null)
@@ -79,13 +80,13 @@ public class InGameInventory : PlayerInventory
         }
 
         TowerData selectedTower = inventoryData.towers[indexClicked];
-        previewTower = Instantiate(selectedTower.objPrefabs);
+        previewTower = Instantiate(selectedTower.objPrefabs, parentStorage);
         previewTower.transform.position = GetMouseWorldPosition();
         TowerSelectable tower = previewTower.GetComponent<TowerSelectable>();
         tower.UnPlacedTower();
         tower.Select();
 
-        Debug.Log($"Prévisualisation de la tour : {selectedTower.towerName}");
+        Debug.Log($"Previsualisation de la tour : {selectedTower.towerName}");
     }
 
     private Vector3 GetMouseWorldPosition()

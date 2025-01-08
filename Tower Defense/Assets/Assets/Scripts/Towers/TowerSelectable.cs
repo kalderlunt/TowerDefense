@@ -4,14 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(Tower))]
 public class TowerSelectable : MonoBehaviour, ISelectable
 {
+    [SerializeField] private Collider colliderYouCanClickOn;
     public bool isPlaced { get; private set; }
     public bool isSelected { get; private set; }
+
     public Tower tower { get; private set; }
 
     private void OnEnable()
     {
         tower = GetComponent<Tower>();
-        Assert.IsNotNull(tower, "Le script Tower n'est pas attaché à cet objet.");
+        Assert.IsNotNull(tower, "Le script Tower n'est pas attachï¿½ ï¿½ cet objet.");
 
         isPlaced = false;
         isSelected = false;
@@ -27,7 +29,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = true;
         DisplayTowerRange();
 
-        Debug.Log($"Tour sélectionnée : {gameObject.name}");
+        //Debug.Log($"Tour selectionnee : {gameObject.name}");
     }
 
     public void Deselect()
@@ -40,7 +42,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = false;
         DisplayTowerRange();
 
-        Debug.Log($"Tour {gameObject.name} désélectionnée.");
+        //Debug.Log($"Tour {gameObject.name} deselectionnee.");
     }
 
     private void DisplayTowerRange()
@@ -70,11 +72,13 @@ public class TowerSelectable : MonoBehaviour, ISelectable
     public void PlaceTower()
     {
         isPlaced = true;
+        colliderYouCanClickOn.enabled = true;
     }
 
     public void UnPlacedTower()
     {
         // remettre dans le pool system
         isPlaced = false;
+        colliderYouCanClickOn.enabled = false;
     }
 }

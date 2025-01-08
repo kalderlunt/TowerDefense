@@ -6,8 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<EnemyWave> Waves;
     [SerializeField] private float WaveInterval = 30f;
+    [SerializeField] private Transform parentStorage;
 
-    private Dictionary<GameObject, ComponentPool<Enemy>> enemyPools; // Pools basés sur des piles
+    private Dictionary<GameObject, ComponentPool<Enemy>> enemyPools; // Pools basï¿½s sur des piles
     private int currentWaveIndex = 0;
 
     private void Start()
@@ -26,7 +27,8 @@ public class EnemySpawner : MonoBehaviour
                 enemyPools[config.enemyPrefab] = new ComponentPool<Enemy>(
                     config.enemyPrefab,
                     capacity: 50,
-                    preAllocateCount: 50 // Pré-allocation initiale
+                    preAllocateCount: 50, // Prï¿½-allocation initiale
+                    parentStorage: this.parentStorage
                 );
             }
         }
@@ -47,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("Toutes les vagues ont été complétées !");
+        Debug.Log("Toutes les vagues ont ete completees !");
     }
 
     private IEnumerator SpawnWaveEnemies(EnemyWave wave)
@@ -69,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
             //remettre ses data a 0
             enemy.ResetData();
 
-            // Relâcher l'ennemi dans le pool après sa mort
+            // Relï¿½cher l'ennemi dans le pool aprï¿½s sa mort
             enemy.onDeath += () => enemyPools[config.enemyPrefab].Release(enemy);
 
             yield return new WaitForSeconds(config.spawnInterval);

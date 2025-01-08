@@ -9,13 +9,13 @@ public class ComponentPool<T> : IPool<T> where T : Component, IPooledObject<T>
     public int AliveobjectsCount => _pool.AliveobjectsCount;
 
 
-    public ComponentPool(GameObject prefab, int capacity, int preAllocateCount = 0)
+    public ComponentPool(GameObject prefab, int capacity, int preAllocateCount = 0, UnityEngine.Transform parentStorage = null)
     {
         Assert.IsNotNull(prefab, "ComponentPool : prefab cannot be null");
         _pool = new(
             () =>
             {
-                GameObject gameObject = Object.Instantiate(prefab);
+                GameObject gameObject = Object.Instantiate(prefab, parentStorage);
                 T component = gameObject.GetComponent<T>();
                 return component;
             },

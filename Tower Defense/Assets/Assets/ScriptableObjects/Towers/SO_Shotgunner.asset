@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Shotgunner
   m_EditorClassIdentifier: 
   towerName: Shotgunner
+  tower: 4
   level: 0
   unlockCost: 2500
   baseCost: 300
