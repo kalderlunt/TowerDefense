@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Assets.Scripts.Managers;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class PlayerInput : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red, 1);
             
             GameObject newTarget = hit.collider.gameObject;
-
+            
             if (newTarget.GetComponent<Tower>())
             {
                 if (targetSelected == newTarget)
@@ -101,6 +102,14 @@ public class PlayerInput : MonoBehaviour
 
         mousePosition = context.ReadValue<Vector2>();
         //Debug.Log($"mouse World Position : {mouseWorldPosition}");
+    }
+
+    public void CancelPlaceTower(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EventManager.instance.onCancelPlaceTower?.Invoke();
+        }
     }
 
 

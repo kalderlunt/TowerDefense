@@ -1,17 +1,26 @@
+using System;
+using Assets.Scripts.Managers;
 using NUnit.Framework;
 using UnityEngine;
 
 [RequireComponent(typeof(Tower))]
 public class TowerSelectable : MonoBehaviour, ISelectable
 {
+    [SerializeField] private Collider colliderYouCanClickOn;
     public bool isPlaced { get; private set; }
     public bool isSelected { get; private set; }
+
     public Tower tower { get; private set; }
+
+    private void Start()
+    {
+        EventManager.instance.onCancelPlaceTower.AddListener(CancelPlaceTower);
+    }
 
     private void OnEnable()
     {
         tower = GetComponent<Tower>();
-        Assert.IsNotNull(tower, "Le script Tower n'est pas attaché à cet objet.");
+        Assert.IsNotNull(tower, "Le script Tower n'est pas attachï¿½ ï¿½ cet objet.");
 
         isPlaced = false;
         isSelected = false;
@@ -27,7 +36,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = true;
         DisplayTowerRange();
 
-        Debug.Log($"Tour sélectionnée : {gameObject.name}");
+        //Debug.Log($"Tour selectionnee : {gameObject.name}");
     }
 
     public void Deselect()
@@ -40,7 +49,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = false;
         DisplayTowerRange();
 
-        Debug.Log($"Tour {gameObject.name} désélectionnée.");
+        //Debug.Log($"Tour {gameObject.name} deselectionnee.");
     }
 
     private void DisplayTowerRange()
@@ -67,14 +76,23 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         transform.position = mouseWorldPosition;
     }
 
+    private void CancelPlaceTower()
+    {
+        Destroy(tower.gameObject);
+    }
+    
+
     public void PlaceTower()
     {
         isPlaced = true;
+        colliderYouCanClickOn.enabled = true;
+        EventManager.instance.onCancelPlaceTower.RemoveListener(CancelPlaceTower);
     }
 
     public void UnPlacedTower()
     {
         // remettre dans le pool system
         isPlaced = false;
+        colliderYouCanClickOn.enabled = false;
     }
 }
