@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyData))]
 public class Enemy : MonoBehaviour, IPooledObject<Enemy>
 {
-    private EnemyData data;
+    public EnemyData data { get; private set; }
 
     private Pool<Enemy> pool;
     public event Action onDeath;

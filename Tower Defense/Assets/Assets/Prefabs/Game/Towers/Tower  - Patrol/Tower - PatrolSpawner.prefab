@@ -1030,7 +1030,7 @@ MonoBehaviour:
     patrolPrefab: {fileID: 7137191296871753655, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
     health: 0
     maxHealth: 40
-    moveSpeed: 1
+    moveSpeed: 2
     transform: {fileID: 0}
   parentStorage: {fileID: 7980961050412729228}
 --- !u!1 &6584924523539419245
@@ -1298,6 +1298,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5753176965737280575, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475721794569865009, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7137191296871753655, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
       propertyPath: m_Name
       value: Patrol
@@ -1305,6 +1313,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2653485375702982445, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
     - {fileID: 3545195484494976968, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
+    - {fileID: 1353018359822147187, guid: b4aedc3d1d0a4f048b074f6da81292e6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

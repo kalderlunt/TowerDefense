@@ -32,7 +32,10 @@ namespace Assets.Scripts.Spawners
             Patrol patrol = Instantiate(data.patrolPrefab, parentStorage).GetComponent<Patrol>();
             patrol.SetData(data);
             patrol.ResetData(data);
-            patrol.onDestroyPatrol += () => Destroy(patrol.gameObject);
+            /*patrol.onDestroyPatrol += () =>
+            {
+                Destroy(patrol.gameObject);
+            };*/
         }
     }
 }

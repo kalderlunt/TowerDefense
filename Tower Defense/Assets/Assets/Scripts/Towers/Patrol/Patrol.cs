@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Assets.Scripts.Data;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace Assets.Scripts.Towers.Patrol
@@ -9,8 +11,49 @@ namespace Assets.Scripts.Towers.Patrol
     {
         private PatrolData data;
         //private Pool<Patrol> pool;
+        private TowerRange colliderCar;
         public event Action onDestroyPatrol;
 
+        
+        private void Start()
+        {
+            colliderCar = GetComponentInChildren<TowerRange>();
+            Assert.IsNotNull(colliderCar, $"Tower {name} n'a pas de TowerRange");
+            
+            if (colliderCar)
+                colliderCar.EventEnterInRange += OnEnemyEnterRange;
+        }
+
+        private void OnEnemyEnterRange(Collider collision)
+        {
+            if (IsEnemy(collision.gameObject) /*&& IsInRange(collision.transform)*/)
+            {
+                Attack(collision.gameObject);
+            }
+        }
+        
+        private bool IsEnemy(GameObject obj)
+        {
+            return obj.GetComponent<Enemy>();
+        }
+        
+        private void Attack(GameObject enemyTarget)
+        {
+            //Debug.Log($"{gameObject} Shouting");
+            Enemy enemy = enemyTarget.GetComponent<Enemy>();
+            Assert.IsNotNull(enemy, $"L'objet {enemyTarget.name} n'a pas de script Enemy attach�.");
+
+            float enemyHealth = enemy.data.health;
+            enemy.TakeDamage(data.health);
+            TakeDamage(enemyHealth);
+        
+            Debug.Log($"enemy.data.health : {enemy.data.health}");
+            Debug.Log($"patrol.data.health : {data.health}");
+            //Play Sound
+            //AudioManager.instance.PlaySfx(data.attackSound);
+        }
+        
+        
         public void TakeDamage(float damage)
         {
             data.health -= damage;
@@ -41,7 +84,7 @@ namespace Assets.Scripts.Towers.Patrol
             this.data = data;
         }
 
-        private void DestroyPatrol()
+        public void DestroyPatrol()
         {
             onDestroyPatrol?.Invoke();
             onDestroyPatrol = null;
