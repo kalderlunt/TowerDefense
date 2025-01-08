@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Patrol
   m_EditorClassIdentifier: 
   towerName: Patrol
+  tower: 7
   level: 0
   unlockCost: 4000
   baseCost: 400

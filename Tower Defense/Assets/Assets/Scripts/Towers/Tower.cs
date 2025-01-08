@@ -3,6 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Data;
+using Assets.Scripts.Managers;
+using Assets.Scripts.Spawners;
+using UnityEditorInternal;
 using UnityEngine;
 
 [RequireComponent(typeof(TowerSelectable))]
@@ -103,6 +107,11 @@ public class Tower : MonoBehaviour
                 case DamageType.Burst:
                     BurstAttack(enemiesInRange[0]);
                     break;
+                
+                case DamageType.NotApplicable:
+                    NotApplicableAttack();
+                    break;
+                    
 
 
 
@@ -223,9 +232,15 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void SpawnPatrol()
+    private void NotApplicableAttack()
     {
-        
+        switch (data.tower)
+        {
+            case TowerClass.Patrol:
+                //GetComponent<PatrolSpawner>().Spawn();
+                //EventManager.instance.onSpawnPatrol?.Invoke();
+                break;
+        }
     }
     
     #endregion

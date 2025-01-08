@@ -86,7 +86,7 @@ public class InGameInventory : PlayerInventory
         tower.UnPlacedTower();
         tower.Select();
 
-        Debug.Log($"Pr�visualisation de la tour : {selectedTower.towerName}");
+        Debug.Log($"Previsualisation de la tour : {selectedTower.towerName}");
     }
 
     private Vector3 GetMouseWorldPosition()

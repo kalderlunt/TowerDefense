@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Assets.Scripts.Data
 {
@@ -11,8 +12,7 @@ namespace Assets.Scripts.Data
         
         [HideInInspector] public float health;
         public float maxHealth;
-        
-        public float patrolSpeed;
+        public float moveSpeed;
         [HideInInspector] public Transform transform;
         
         public void ResetData()

@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Towers.Patrol
 {
-    [RequireComponent(typeof(PatrolData))]
-    public class PatrolBehaviour : MonoBehaviour, IPooledObject<PatrolBehaviour>
+    [RequireComponent(typeof(PatrolMovement))]
+    public class Patrol : MonoBehaviour, IPooledObject<Patrol>
     {
         private PatrolData data;
-        private Pool<PatrolBehaviour> pool;
-
+        private Pool<Patrol> pool;
         public event Action onDeath;
-        
+
         public void TakeDamage(float damage)
         {
             data.health -= damage;
@@ -22,14 +21,19 @@ namespace Assets.Scripts.Towers.Patrol
             }
         }
         
-        public void SetPool(Pool<PatrolBehaviour> pool)
+        public void SetPool(Pool<Patrol> pool)
         {
             this.pool = pool;
         }
 
-        public void ResetData()
+        public void ResetData(PatrolData data)
         {
             data.ResetData();
+        }
+
+        public PatrolData GetData()
+        {
+            return data;
         }
 
         private void DestroyPatrol()

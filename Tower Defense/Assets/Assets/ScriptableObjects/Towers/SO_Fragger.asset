@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Fragger
   m_EditorClassIdentifier: 
   towerName: Fragger
+  tower: 2
   level: 0
   unlockCost: 0
   baseCost: 0
@@ -26,6 +27,8 @@ MonoBehaviour:
   baseFirerate: 0
   rangeInfo: 1
   baseRange: 0
+  burstMaxBullets: 3
+  burstDelay: 0.5
   hiddenDetection: 0
   leadDetection: 0
   flyingDetection: 0

@@ -29,7 +29,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = true;
         DisplayTowerRange();
 
-        Debug.Log($"Tour s�lectionn�e : {gameObject.name}");
+        //Debug.Log($"Tour selectionnee : {gameObject.name}");
     }
 
     public void Deselect()
@@ -42,7 +42,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         isSelected = false;
         DisplayTowerRange();
 
-        Debug.Log($"Tour {gameObject.name} d�s�lectionn�e.");
+        //Debug.Log($"Tour {gameObject.name} deselectionnee.");
     }
 
     private void DisplayTowerRange()
