@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Soldier
   m_EditorClassIdentifier: 
   towerName: Soldier
+  tower: 6
   level: 0
   unlockCost: 1500
   baseCost: 700

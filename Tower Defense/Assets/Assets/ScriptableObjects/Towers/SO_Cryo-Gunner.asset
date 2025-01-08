@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Cryo-Gunner
   m_EditorClassIdentifier: 
   towerName: Cryo-Gunner
+  tower: 5
   level: 0
   unlockCost: 1600
   baseCost: 450
@@ -26,6 +27,8 @@ MonoBehaviour:
   baseFirerate: 0.608
   rangeInfo: 1
   baseRange: 10
+  burstMaxBullets: 3
+  burstDelay: 0.5
   hiddenDetection: 4
   leadDetection: 4
   flyingDetection: 0

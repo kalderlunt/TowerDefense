@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_Sniper
   m_EditorClassIdentifier: 
   towerName: Sniper
+  tower: 3
   level: 0
   unlockCost: 0
   baseCost: 300
@@ -26,6 +27,8 @@ MonoBehaviour:
   baseFirerate: 4.008
   rangeInfo: 2
   baseRange: 27.5
+  burstMaxBullets: 3
+  burstDelay: 0.5
   hiddenDetection: 2
   leadDetection: 3
   flyingDetection: 1

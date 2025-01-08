@@ -6,6 +6,7 @@ using UnityEngine;
 public class TowerData : ScriptableObject
 {
     public string towerName;
+    public TowerClass tower;
     public TowerLevel level;
 
     [Header("Price")]
@@ -131,4 +132,17 @@ public enum PurchaseState
 {
     Locked,
     Unlocked,
+}
+
+public enum TowerClass
+{
+    NotApplicable,
+    Scout,
+    Fragger,
+    Sniper,
+    ShotGunner,
+    CryoGunner,
+    Soldier,
+    Patrol,
+    Barracks
 }

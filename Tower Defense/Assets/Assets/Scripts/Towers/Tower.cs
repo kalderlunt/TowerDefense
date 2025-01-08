@@ -3,6 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Data;
+using Assets.Scripts.Managers;
+using Assets.Scripts.Spawners;
+using UnityEditorInternal;
 using UnityEngine;
 
 [RequireComponent(typeof(TowerSelectable))]
@@ -92,19 +96,18 @@ public class Tower : MonoBehaviour
 
     private void AttackByType()
     {
-        if (fireCooldown <= 0f && enemiesInRange.Count > 0)
+        if (fireCooldown > 0f) return;
+        if (enemiesInRange.Count > 0)
         {
             switch (data.damageType)
             {
-                case DamageType.Single:
+                case DamageType.Single :
                     SingleAttack(enemiesInRange[0]); // Premi�re cible
                     break;
 
                 case DamageType.Burst:
                     BurstAttack(enemiesInRange[0]);
                     break;
-
-
 
                 /*case DamageType.Multiple:
                     AttackMultiple(3); // Par exemple, attaque jusqu'� 3 cibles
@@ -121,6 +124,15 @@ public class Tower : MonoBehaviour
                 case DamageType.Farthest:
                     Attack(GetFarthestEnemy());
                     break;*/
+            }
+        }
+        else
+        {
+            switch (data.damageType)
+            {
+                case DamageType.NotApplicable:
+                NotApplicableAttack();
+                break;
             }
         }
     }
@@ -187,8 +199,9 @@ public class Tower : MonoBehaviour
         Enemy enemyScript = enemyTarget.GetComponent<Enemy>();
         Assert.IsNotNull(enemyScript, $"L'objet {enemyTarget.name} n'a pas de script Enemy attach�.");
         
-        transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
-        enemyScript.TakeDamage(data.baseDamage, data.damageType);
+        if (data.damageType != DamageType.NotApplicable)
+            transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
+        enemyScript.TakeDamage(data.baseDamage);
         ResetFireCooldown();
         
         //Play Sound
@@ -206,7 +219,6 @@ public class Tower : MonoBehaviour
         if (burstCount > 0) return;
         StartCoroutine(PerformBurstAttack(enemyTarget));
     }
-    
     private IEnumerator PerformBurstAttack(GameObject enemyTarget)
     {
         burstCount = data.burstMaxBullets;
@@ -222,5 +234,19 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(data.burstDelay);
         }
     }
+
+    private void NotApplicableAttack()
+    {
+        switch (data.tower)
+        {
+            case TowerClass.Patrol:
+                GetComponent<PatrolSpawner>().Spawn();
+                //EventManager.instance.onSpawnPatrol?.Invoke();
+                break;
+        }
+        
+        ResetFireCooldown();
+    }
+    
     #endregion
 }
