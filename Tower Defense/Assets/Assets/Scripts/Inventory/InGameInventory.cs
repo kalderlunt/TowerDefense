@@ -9,8 +9,10 @@ public class InGameInventory : PlayerInventory
     [SerializeField] private GameObject inventoryItemPrefab; // Pr�fabriqu� des slots d'inventaire
     [SerializeField] private Transform inventoryContainer; // Conteneur des slots d'inventaire
     [SerializeField] private Transform parentStorage;
+    [SerializeField] private LayerMask maskToExclude;
     private List<GameObject> inventorySlots = new List<GameObject>();
     private GameObject previewTower; // Objet temporaire pour la pr�visualisation
+    public GameObject PreviewTower => previewTower;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class InGameInventory : PlayerInventory
     }
 
     private void Update()
-    {
+    {        
         if (previewTower != null)
         {
             previewTower.transform.position = GetMouseWorldPosition();
@@ -71,6 +73,17 @@ public class InGameInventory : PlayerInventory
 
     private bool IsValidPlacement(Vector3 position)
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            GameObject newTarget = hit.collider.gameObject;
+            
+            if (newTarget.GetComponent<Tower>())
+            {
+                return false;
+            }
+        }
+        
         // Ajouter des v�rifications comme : zone accessible, pas d'objet bloquant, etc.
         return true;
     }
@@ -101,7 +114,9 @@ public class InGameInventory : PlayerInventory
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject == previewTower || hit.collider.GetComponent<Tower>())
+            GameObject newTarget = hit.collider.gameObject;
+            
+            if (newTarget == previewTower || newTarget.GetComponent<Tower>())
             {
                 return previewTower.transform.position;
             }
