@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Data;
+using Assets.Scripts.Managers;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -47,16 +48,22 @@ namespace Assets.Scripts.Towers.Patrol
             enemy.TakeDamage(data.health);
             TakeDamage(enemyHealth);
         
-            Debug.Log($"enemy.data.health : {enemy.data.health}");
-            Debug.Log($"patrol.data.health : {data.health}");
-            //Play Sound
+            //Debug.Log($"enemy.data.health : {enemy.data.health}");
+            //Debug.Log($"patrol.data.health : {data.health}");
+            //PlaySfx hit Sound
             //AudioManager.instance.PlaySfx(data.attackSound);
         }
         
         
         public void TakeDamage(float damage)
         {
+            float lastHealthAmmount = data.health;
             data.health -= damage;
+            
+            float healthClamp = Mathf.Clamp(data.health, 0, data.maxHealth);
+            float resultToAddMoney = lastHealthAmmount - healthClamp;
+            
+            EventManager.instance.AddMoneyPlayerInGame?.Invoke((int)resultToAddMoney);
 
             if (data.health <= 0)
             {

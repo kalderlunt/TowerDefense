@@ -1,3 +1,5 @@
+using System;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -23,6 +25,18 @@ namespace Assets.Scripts.Player
 
             Debug.Log("Money : " + money); 
             money = moneyStart;
+            Debug.Log("Money : " + money);
+        }
+
+        private void Start()
+        {
+            EventManager.instance.AddMoneyPlayerInGame.AddListener(AddMoney);
+        }
+        
+        public void AddMoney(int amount)
+        {
+            money += amount;
+            EventManager.instance.onRefreshMoneyPlayerInGame.Invoke();
             Debug.Log("Money : " + money);
         }
     }
