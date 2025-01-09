@@ -4178,6 +4178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waypoint Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6418727466331336433, guid: 99d02d98efc53394d9f6b6080bde8678, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6430196865761586118, guid: 99d02d98efc53394d9f6b6080bde8678, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4217,6 +4221,10 @@ PrefabInstance:
     - target: {fileID: 6430196865761586118, guid: 99d02d98efc53394d9f6b6080bde8678, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126654611591578248, guid: 99d02d98efc53394d9f6b6080bde8678, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

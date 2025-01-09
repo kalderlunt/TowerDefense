@@ -12,7 +12,7 @@ namespace Assets.Scripts.Towers.Patrol
         private PatrolData data;
         //private Pool<Patrol> pool;
         private TowerRange colliderCar;
-        public event Action onDestroyPatrol;
+        //public event Action onDestroyPatrol;
 
         
         private void Start()
@@ -86,8 +86,13 @@ namespace Assets.Scripts.Towers.Patrol
 
         public void DestroyPatrol()
         {
-            onDestroyPatrol?.Invoke();
-            onDestroyPatrol = null;
+            Debug.Log("Patrol Destroyed");
+            Destroy(gameObject);
+            
+            //PlaySfx Destruction sound
+            
+            /*onDestroyPatrol?.Invoke();
+            onDestroyPatrol = null;*/
         }
     }
 }
