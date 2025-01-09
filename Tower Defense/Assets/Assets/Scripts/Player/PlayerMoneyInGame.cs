@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public class PlayerMoneyInGame : MonoBehaviour
+namespace Assets.Scripts.Player
 {
-    public static PlayerMoneyInGame instance;
-    
-    [SerializeField] private int moneyStart = 400;
-    public int money { get; private set; }
-
-
-    private void Awake()
+    public class PlayerMoneyInGame : MonoBehaviour
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        public static PlayerMoneyInGame instance;
+    
+        [SerializeField] private int moneyStart = 400;
+        public int money { get; set; }
 
-        Debug.Log("Money : " + money); 
-        money = moneyStart;
-        Debug.Log("Money : " + money);
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+            Debug.Log("Money : " + money); 
+            money = moneyStart;
+            Debug.Log("Money : " + money);
+        }
     }
 }

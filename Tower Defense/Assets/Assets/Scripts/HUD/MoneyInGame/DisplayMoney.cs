@@ -1,19 +1,25 @@
+using Assets.Scripts.Managers;
+using Assets.Scripts.Player;
 using TMPro;
 using UnityEngine;
 
-public class DisplayMoney : MonoBehaviour
+namespace Assets.Scripts.HUD.MoneyInGame
 {
-    [SerializeField] private TMP_Text moneyText;
-    private PlayerMoneyInGame playerMoney;
-
-    private void Start()
+    public class DisplayMoney : MonoBehaviour
     {
-        playerMoney = PlayerMoneyInGame.instance;
-        RefreshText();
-    }
+        [SerializeField] private TMP_Text moneyText;
+        private PlayerMoneyInGame playerMoney;
 
-    public void RefreshText()
-    {
-        moneyText.text = $"${playerMoney.money}";
+        private void Start()
+        {
+            playerMoney = PlayerMoneyInGame.instance;
+            EventManager.instance.onRefreshMoneyPlayerInGame.AddListener(RefreshText);
+            RefreshText();
+        }
+
+        public void RefreshText()
+        {
+            moneyText.text = $"${playerMoney.money}";
+        }
     }
 }

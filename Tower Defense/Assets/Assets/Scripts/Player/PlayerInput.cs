@@ -46,7 +46,7 @@ public class PlayerInput : MonoBehaviour
                 ChangeTarget(newTarget);
                 return;
             }
-
+            
             DeselectCurrentTower();
         }
     }

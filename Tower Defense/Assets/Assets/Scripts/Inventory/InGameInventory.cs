@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -50,6 +51,12 @@ public class InGameInventory : PlayerInventory
     {
         if (IsValidPlacement(previewTower.transform.position))
         {
+            if (PlayerMoneyInGame.instance.money < previewTower.GetComponent<Tower>().data.baseCost)
+            {
+                // PlaySfx error de placage, pas assez d'argent
+                Debug.Log("Not enough Cash to place this tower");
+                return;
+            }
             TowerSelectable towerSelected = previewTower.GetComponent<TowerSelectable>();
             towerSelected.PlaceTower();
             towerSelected.Deselect();
@@ -74,11 +81,11 @@ public class InGameInventory : PlayerInventory
     /// <param name="indexClicked">Donn�es de la tour � pr�visualiser</param>
     protected void PlacePreviewTower(int indexClicked)
     {
-        if (previewTower = null)
+        if (previewTower != null)
         {
             return;
         }
-
+        
         TowerData selectedTower = inventoryData.towers[indexClicked];
         previewTower = Instantiate(selectedTower.objPrefabs, parentStorage);
         previewTower.transform.position = GetMouseWorldPosition();
