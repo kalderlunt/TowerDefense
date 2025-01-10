@@ -7,13 +7,12 @@ public class PlayerInput : MonoBehaviour
 {
     public static event Action<GameObject> OnTowerSelected;
     public static event Action<GameObject> OnTowerDeselected;
-    
-    private GameObject targetSelected;
-
-    private Vector2 mousePosition;
 
     [SerializeField] private LayerMask maskToExclude;
-
+    [SerializeField] private InGameInventory playerInventory;
+    
+    private GameObject targetSelected;
+    private Vector2 mousePosition;
 
     public void Select(InputAction.CallbackContext context)
     {
@@ -27,9 +26,11 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdateSelection()
     {
+        
+        if (playerInventory.PreviewTower != null) return;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
-
+        
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~maskToExclude))
         {
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red, 1);
@@ -46,7 +47,7 @@ public class PlayerInput : MonoBehaviour
                 ChangeTarget(newTarget);
                 return;
             }
-
+            
             DeselectCurrentTower();
         }
     }

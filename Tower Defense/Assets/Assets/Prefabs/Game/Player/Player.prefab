@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1866800140137244917}
   - component: {fileID: 5493344509237544907}
   - component: {fileID: 391551184074266759}
+  - component: {fileID: 3912280276820405742}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,6 +303,19 @@ MonoBehaviour:
   hpMax: 100
   nextScene: Menu
   lerpTimer: 0
+--- !u!114 &3912280276820405742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118844525497995876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0313414041236f94eac708f611f9bfc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyStart: 400
 --- !u!1 &6381148968246743804
 GameObject:
   m_ObjectHideFlags: 0

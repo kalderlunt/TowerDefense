@@ -29,13 +29,14 @@ namespace Assets.Scripts.Spawners
         {
             //Patrol patrol = patrolPools[data.patrolPrefab].Get();
             //patrol.onDeath += () => patrolPools[data.patrolPrefab].Release(patrol);
-            Patrol patrol = Instantiate(data.patrolPrefab, parentStorage).GetComponent<Patrol>();
-            patrol.SetData(data);
-            patrol.ResetData(data);
             /*patrol.onDestroyPatrol += () =>
             {
                 Destroy(patrol.gameObject);
             };*/
+            
+            Patrol patrol = Instantiate(data.patrolPrefab, parentStorage).GetComponent<Patrol>();
+            patrol.SetData(data);
+            patrol.ResetData(data);
         }
     }
 }

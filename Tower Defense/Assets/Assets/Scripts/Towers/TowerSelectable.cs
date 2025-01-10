@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Player;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -70,7 +71,7 @@ public class TowerSelectable : MonoBehaviour, ISelectable
     private void MoveTower(Vector3 mouseWorldPosition)
     {
         if (isPlaced) { return; }
-        if (!isSelected) { return; }
+        if (isSelected) { return; }
 
         //Debug.Log($"Position de la souris : {mouseWorldPosition}");
         transform.position = mouseWorldPosition;
@@ -81,11 +82,12 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         Destroy(tower.gameObject);
     }
     
-
     public void PlaceTower()
     {
         isPlaced = true;
         colliderYouCanClickOn.enabled = true;
+        PlayerMoneyInGame.instance.money -= tower.data.baseCost;
+        EventManager.instance.onRefreshMoneyPlayerInGame?.Invoke();
         EventManager.instance.onCancelPlaceTower.RemoveListener(CancelPlaceTower);
     }
 

@@ -197,7 +197,7 @@ public class Tower : MonoBehaviour
     {
         //Debug.Log($"{gameObject} Shouting");
         Enemy enemyScript = enemyTarget.GetComponent<Enemy>();
-        Assert.IsNotNull(enemyScript, $"L'objet {enemyTarget.name} n'a pas de script Enemy attach�.");
+        Assert.IsNotNull(enemyScript, $"L'objet {enemyTarget.name} n'a pas de script Enemy attache.");
         
         if (data.damageType != DamageType.NotApplicable)
             transform.LookAt(new Vector3(enemyScript.transform.position.x, transform.position.y, enemyScript.transform.position.z));
