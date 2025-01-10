@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyData))]
@@ -16,7 +17,13 @@ public class Enemy : MonoBehaviour, IPooledObject<Enemy>
 
     public void TakeDamage(float damage)
     {
+        float lastHealthAmmount = data.health;
         data.health -= damage;
+            
+        float healthClamp = Mathf.Clamp(data.health, 0, data.maxHealth);
+        float resultToAddMoney = lastHealthAmmount - healthClamp;
+            
+        EventManager.instance.AddMoneyPlayerInGame?.Invoke((int)resultToAddMoney);
 
         if (data.health <= 0)
         {
