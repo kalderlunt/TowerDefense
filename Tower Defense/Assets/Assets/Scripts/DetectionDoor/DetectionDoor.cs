@@ -12,11 +12,13 @@ public class DetectionDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyData enemy = other.GetComponent<EnemyData>();
-        if (enemy)
+        EnemyData enemyData = other.GetComponent<EnemyData>();
+        if (enemyData)
         {
-            playerHealth.DecreaseHealth(enemy.health);
-            Destroy(enemy.gameObject);
+            Enemy enemy = enemyData.GetComponent<Enemy>();
+            playerHealth.DecreaseHealth(enemyData.health);
+            enemy.TakeDamage(enemyData.health);
+            Destroy(enemyData.gameObject);
         }
     }
 }

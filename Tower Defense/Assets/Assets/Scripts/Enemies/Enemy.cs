@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour, IPooledObject<Enemy>
         float healthClamp = Mathf.Clamp(data.health, 0, data.maxHealth);
         float resultToAddMoney = lastHealthAmmount - healthClamp;
             
-        EventManager.instance.AddMoneyPlayerInGame?.Invoke((int)resultToAddMoney);
+        EventManager.instance.AddMoneyPlayerInGame?.Invoke((int)resultToAddMoney * 4);
 
         if (data.health <= 0)
         {
