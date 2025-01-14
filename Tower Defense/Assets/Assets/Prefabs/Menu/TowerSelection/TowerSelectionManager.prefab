@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5381103346384742582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797313349412874325}
+  - component: {fileID: 8125254863252818569}
+  m_Layer: 0
+  m_Name: TowerSelectionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797313349412874325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381103346384742582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8125254863252818569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381103346384742582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30a1817b673def45a581373f8a9d6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: f4f39b6c8b5aee54e9fd87519b69c6e2, type: 2}
+  selectedTower: {fileID: 0}
+  towers:
+  - {fileID: 11400000, guid: b61ccdea5eb528c4aa255053186d2b90, type: 2}
+  - {fileID: 11400000, guid: e8f9db986ec096642bb77487726ab823, type: 2}
+  - {fileID: 11400000, guid: d79981d73a169964d894500b3cdfb831, type: 2}
+  - {fileID: 11400000, guid: bb1e6f36a9d2d1d44b91ffe0aeb6df62, type: 2}
+  - {fileID: 11400000, guid: aaa2c7496f81b114699ed26dbbfe4163, type: 2}
+  - {fileID: 11400000, guid: f5f795c7562ade34aa6b7505b9545e9a, type: 2}
+  - {fileID: 11400000, guid: ae9b916e83bda2d4daadceac1d1ec90b, type: 2}
+  - {fileID: 11400000, guid: 94e815d123b6f7a4f96c725193f32373, type: 2}
+  towerButtonContainer: {fileID: 0}
+  towerButtonPrefab: {fileID: 6814239452926221157, guid: dd329374d47b20f4ca470257ba395225, type: 3}
+  towerNameText: {fileID: 0}
+  towerCostText: {fileID: 0}
+  towerDamageText: {fileID: 0}
+  towerDamageTypeText: {fileID: 0}
+  towerRangeText: {fileID: 0}
+  towerPlacementText: {fileID: 0}
+  towerIconSprite: {fileID: 0}
+  purchaseButton: {fileID: 0}
+  purchaseButtonText: {fileID: 0}
+  lockCreditImage: {fileID: 0}
+  unlockButtonColor: {r: 0.29411766, g: 0.50980395, b: 0.65882355, a: 1}
+  lockButtonColor: {r: 0.74509805, g: 0.62352943, b: 0.42352945, a: 1}
+  inventoryContainer: {fileID: 0}
+  inventoryItemPrefab: {fileID: 5379149903525914, guid: 0dabb60aea18a1a4d974f3939f37f4af, type: 3}

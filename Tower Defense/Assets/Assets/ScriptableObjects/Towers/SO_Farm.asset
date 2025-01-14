@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Farm
+  m_EditorClassIdentifier: 
+  towerName: Farm
+  level: 0
+  unlockCost: 2500
+  baseCost: 250
+  baseCellingPrice: 83
+  type: 1
+  placement: 0
+  baseDamage: 0
+  bulletsOfNumber: 0
+  damage: 3
+  damageType: 0
+  baseFirerate: 0
+  rangeInfo: 0
+  baseRange: 0
+  hiddenDetection: 0
+  leadDetection: 0
+  flyingDetection: 0
+  immunities: 2
+  placementFootprint: 1
+  purchaseState: 0
+  spritesLvl: []
+  objPrefabs: {fileID: 4848625520043179020, guid: 2f77d75135393f340bf1ba43807bd4c4, type: 3}
+  test:
+    serializedVersion: 2
+    m_Bits: 0

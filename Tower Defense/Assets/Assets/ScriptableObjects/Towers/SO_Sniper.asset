@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Sniper
+  m_EditorClassIdentifier: 
+  towerName: Sniper
+  tower: 3
+  level: 0
+  unlockCost: 0
+  baseCost: 300
+  baseCellingPrice: 100
+  type: 0
+  placement: 1
+  baseDamage: 4
+  bulletsOfNumber: 1
+  damage: 1
+  damageType: 1
+  baseFirerate: 4.008
+  rangeInfo: 2
+  baseRange: 27.5
+  burstMaxBullets: 3
+  burstDelay: 0.5
+  hiddenDetection: 2
+  leadDetection: 3
+  flyingDetection: 1
+  immunities: 1
+  placementFootprint: 1
+  purchaseState: 0
+  spritesLvl:
+  - {fileID: 21300000, guid: 5a001f009b49dbe45b798e24616981f5, type: 3}
+  - {fileID: 21300000, guid: 758e15e9982cf3945ae0cae1c757f5d1, type: 3}
+  - {fileID: 21300000, guid: bb9d86abf76b3bc40bf2c628c54b5d48, type: 3}
+  - {fileID: 21300000, guid: b205d60ee99fb0148bddef8743b1d19c, type: 3}
+  - {fileID: 21300000, guid: 18dca32df47a55a49a5ec7136c4aa4e9, type: 3}
+  objPrefabs: {fileID: 7561378472715676986, guid: 1e00fb98647a4794a8c4622676ae2c13, type: 3}

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb643350a2a7644882fcbfc4efa8aea, type: 3}
+  m_Name: SO_Scout
+  m_EditorClassIdentifier: 
+  towerName: Scout
+  tower: 1
+  level: 0
+  unlockCost: 0
+  baseCost: 200
+  baseCellingPrice: 66
+  type: 0
+  placement: 0
+  baseDamage: 1
+  bulletsOfNumber: 1
+  damage: 0
+  damageType: 1
+  baseFirerate: 1.208
+  rangeInfo: 1
+  baseRange: 12
+  burstMaxBullets: 3
+  burstDelay: 0.5
+  hiddenDetection: 2
+  leadDetection: 0
+  flyingDetection: 0
+  immunities: 0
+  placementFootprint: 2
+  purchaseState: 1
+  spritesLvl:
+  - {fileID: 21300000, guid: c9965fc86a2aac648a47e39c99f5c219, type: 3}
+  - {fileID: 21300000, guid: b00594d2c0338864592317bf3ce8347a, type: 3}
+  - {fileID: 21300000, guid: 4b29bb800b2b7714cad5dff4891ea2f3, type: 3}
+  - {fileID: 21300000, guid: cf2417a03830e7a4597080f53c761806, type: 3}
+  - {fileID: 21300000, guid: 4299e03bc189c9144b7b1f1c1df500dd, type: 3}
+  objPrefabs: {fileID: 1048399473129671079, guid: 5940972202bbe0b458a7ab69aacecd77, type: 3}
