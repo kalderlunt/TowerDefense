@@ -9,7 +9,10 @@ namespace Assets.Scripts.Managers
 
         public UnityEvent onSpawnPatrol { get; private set; } = new();
         public UnityEvent onCancelPlaceTower { get; private set; } = new();
+        public UnityEvent onRefreshMoneyPlayerInGame { get; private set; } = new();
 
+        public UnityEvent<int> AddMoneyPlayerInGame { get; private set; } = new();
+        
         private void Awake()
         {
             if (instance == null)
