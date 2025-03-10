@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "Tower Defense/Tower")]
