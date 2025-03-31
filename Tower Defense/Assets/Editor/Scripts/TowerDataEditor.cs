@@ -1,8 +1,5 @@
 using UnityEditor;
-using UnityEngine;
 
-namespace Assets.Editor__Editor_.Scripts
-{
     [CustomEditor(typeof(TowerData))]
     public class TowerDataEditor : Editor
     {
@@ -45,4 +42,3 @@ namespace Assets.Editor__Editor_.Scripts
         
         #endregion
     }
-}
