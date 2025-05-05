@@ -1,2 +1,14 @@
 # TowerDefense
  
+Les troupes fonctionnelles en jeu sont:
+
+- Scout
+- Patrol
+- Sniper
+- Soldier
+
+le reste peut etre considerer comme non fonctionnel pour le moment mais reste déblocable.
+
+## Lien du [GitHub](https://github.com/kalderlunt/TowerDefense)
+
+https://github.com/kalderlunt/TowerDefense

@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using UnityEditor;
 
 public class AnimHealth : MonoBehaviour
 {
