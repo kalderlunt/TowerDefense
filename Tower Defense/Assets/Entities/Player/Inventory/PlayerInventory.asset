@@ -15,7 +15,7 @@ MonoBehaviour:
   credits: 12600
   towers:
   - {fileID: 11400000, guid: b61ccdea5eb528c4aa255053186d2b90, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d79981d73a169964d894500b3cdfb831, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
