@@ -36,7 +36,7 @@ namespace Assets.Scripts.Player
         {
             money += amount;
             EventManager.instance.onRefreshMoneyPlayerInGame.Invoke();
-            Debug.Log("Money : " + money);
+            //Debug.Log("Money : " + money);
         }
     }
 }

@@ -105,6 +105,11 @@ public class PlayerInput : MonoBehaviour
         //Debug.Log($"mouse World Position : {mouseWorldPosition}");
     }
 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        //
+    }
+
     public void CancelPlaceTower(InputAction.CallbackContext context)
     {
         if (context.performed)
