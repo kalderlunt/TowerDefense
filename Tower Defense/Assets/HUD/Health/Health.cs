@@ -16,18 +16,18 @@ public class Health : MonoBehaviour
         healthPoint = healthMax;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            IncreaseHealth(4);
-        }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.UpArrow))
+    //     {
+    //         IncreaseHealth(4);
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            DecreaseHealth(4);
-        }
-    }
+    //     if(Input.GetKeyDown(KeyCode.DownArrow))
+    //     {
+    //         DecreaseHealth(4);
+    //     }
+    // }
 
     public void IncreaseHealth(float ammount)
     {

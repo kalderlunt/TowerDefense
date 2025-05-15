@@ -80,8 +80,8 @@ public class CameraController : MonoBehaviour
             // Appliquer la rotation finale
             cameraFollowTarget.rotation = Quaternion.Euler(pitch, yaw, 0f);
 
-            Debug.Log($"Pitch: {pitch}");  // ← Vérifie si les valeurs changent
-            Debug.Log($"Yaw: {yaw}");
+            // Debug.Log($"Pitch: {pitch}");  // ← Vérifie si les valeurs changent
+            // Debug.Log($"Yaw: {yaw}");
         }
     }
 

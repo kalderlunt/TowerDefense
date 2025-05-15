@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private LayerMask maskToExclude;
     [SerializeField] private InGameInventory playerInventory;
+    [SerializeField] private PlayerMovement playerMovement;
     
     private GameObject targetSelected;
     private Vector2 mousePosition;
@@ -107,7 +108,14 @@ public class PlayerInput : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //
+        if (context.started || context.performed)
+        {
+            playerMovement.Move(context.ReadValue<Vector2>());
+        }
+        else if (context.canceled)
+        {
+            playerMovement.Move(Vector2.zero);
+        }
     }
 
     public void CancelPlaceTower(InputAction.CallbackContext context)
