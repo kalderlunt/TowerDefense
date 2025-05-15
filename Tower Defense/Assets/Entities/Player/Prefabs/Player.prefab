@@ -405,11 +405,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thirdPersonCam: {fileID: 371086009319281231}
   firstPersonCam: {fileID: 2730575470554883027}
-  zoomSpeed: 40
+  cameraFollowTarget: {fileID: 672267595729556965}
+  zoomSpeed: 20
   minDistance: 0.1
   maxDistance: 10
   heightOffset: 1.8
-  rotationSpeed: 150
+  rotationSpeed: 300
 --- !u!1 &3367389606360390833
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,8 +436,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3367389606360390833}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1999999, z: -10}
+  m_LocalRotation: {x: 0.08892885, y: -0, z: -0, w: 0.996038}
+  m_LocalPosition: {x: 0, y: 1.8000001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -461,8 +462,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 9179097640723188937}
-  m_Follow: {fileID: 9179097640723188937}
+  m_LookAt: {fileID: 8809310865360361646}
+  m_Follow: {fileID: 8809310865360361646}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -566,14 +567,14 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
+  m_HorizontalDamping: 0.1
+  m_VerticalDamping: 0.1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 2
+  m_SoftZoneHeight: 2
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -608,6 +609,7 @@ Transform:
   m_Children:
   - {fileID: 8431685250751367725}
   - {fileID: 2012926197139992159}
+  - {fileID: 8809310865360361646}
   m_Father: {fileID: 9179097640723188937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6381148968246743804
@@ -718,6 +720,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7546040568707316813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8809310865360361646}
+  m_Layer: 0
+  m_Name: Point of View Third Person
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8809310865360361646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7546040568707316813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 672267595729556965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9027563007547429912
 GameObject:
   m_ObjectHideFlags: 0

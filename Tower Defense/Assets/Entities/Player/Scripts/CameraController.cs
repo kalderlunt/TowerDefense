@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
     [Header("Cams Cinemachine")]
     public CinemachineVirtualCamera thirdPersonCam;
     public CinemachineVirtualCamera firstPersonCam;
+    [SerializeField] private Transform cameraFollowTarget;
 
     [Header("Paramètres de zoom")]
     public float zoomSpeed     = 5f;    // vitesse du zoom
@@ -76,18 +77,23 @@ public class CameraController : MonoBehaviour
             float yaw   = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float pitch = -Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
 
-            // rotation horizontale
-            thirdPersonCam.transform.RotateAround(
-                target.position,
-                Vector3.up,
-                yaw
-            );
-            // rotation verticale
-            thirdPersonCam.transform.RotateAround(
-                target.position,
-                thirdPersonCam.transform.right,
-                pitch
-            );
+
+            // Appliquer la rotation sur le Follow Target
+            cameraFollowTarget.Rotate(Vector3.up, yaw, Space.World);
+            cameraFollowTarget.Rotate(Vector3.right, pitch, Space.Self);
+
+            // // rotation horizontale
+            // thirdPersonCam.transform.RotateAround(
+            //     target.position,
+            //     Vector3.up,
+            //     yaw
+            // );
+            // // rotation verticale
+            // thirdPersonCam.transform.RotateAround(
+            //     target.position,
+            //     thirdPersonCam.transform.right,
+            //     pitch
+            // );
         }
     }
 
