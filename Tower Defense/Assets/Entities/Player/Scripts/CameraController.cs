@@ -71,12 +71,10 @@ public class CameraController : MonoBehaviour
         // en 3e personne, on orbite autour du target **uniquement** si clic droit enfoncé
         if (Input.GetMouseButton(1))
         {
-
             Debug.Log("Input.GetMouseButton(1)");
 
             float yaw   = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float pitch = -Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-
 
             // Appliquer la rotation sur le Follow Target
             cameraFollowTarget.Rotate(Vector3.up, yaw, Space.World);
