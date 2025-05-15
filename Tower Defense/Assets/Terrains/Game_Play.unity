@@ -2292,10 +2292,6 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 6003576072351820761}
-    - target: {fileID: 5760298230772619213, guid: 797269bbec46bd04589a16e4ba12ea09, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 9179097640723188937, guid: 797269bbec46bd04589a16e4ba12ea09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.34

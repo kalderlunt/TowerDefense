@@ -471,8 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5760298230772619213}
   playerBody: {fileID: 7435489924202774148}
-  walkSpeed: 5
-  runSpeed: 10
+  walkSpeed: 7
+  runSpeed: 14
 --- !u!54 &5760298230772619213
 Rigidbody:
   m_ObjectHideFlags: 0
