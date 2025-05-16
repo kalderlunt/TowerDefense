@@ -1,5 +1,5 @@
 using System;
-using Assets.Scripts.Managers;
+using Managers;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyData))]

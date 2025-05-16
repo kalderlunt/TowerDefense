@@ -1,9 +1,9 @@
-using Assets.Scripts.Managers;
-using Assets.Scripts.Player;
+using Managers;
+using Entities.Player;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts.HUD.MoneyInGame
+namespace HUD.MoneyInGame
 {
     public class DisplayMoney : MonoBehaviour
     {
@@ -13,7 +13,8 @@ namespace Assets.Scripts.HUD.MoneyInGame
         private void Start()
         {
             playerMoney = PlayerMoneyInGame.instance;
-            EventManager.instance.onRefreshMoneyPlayerInGame.AddListener(RefreshText);
+            //EventManager.instance.onRefreshMoneyPlayerInGame.AddListener(RefreshText);
+            EventManager.instance.onRefreshMoneyPlayerInGame += RefreshText;
             RefreshText();
         }
 

@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using Assets.Scripts.Player;
+using Entities.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class InGameInventory : PlayerInventory
     private GameObject previewTower; // Objet temporaire pour la pr�visualisation
     public GameObject PreviewTower => previewTower;
 
+    public Action onPlacePreviewTower;
+    
     private void Start()
     {
         PopulateInventory();
@@ -105,7 +108,8 @@ public class InGameInventory : PlayerInventory
         TowerSelectable tower = previewTower.GetComponent<TowerSelectable>();
         tower.UnPlacedTower();
         tower.Select();
-
+        onPlacePreviewTower?.Invoke();
+        
         Debug.Log($"Previsualisation de la tour : {selectedTower.towerName}");
     }
 

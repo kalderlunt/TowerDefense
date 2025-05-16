@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using Assets.Scripts.Managers;
+using Managers;
 
 public class PlayerInput : MonoBehaviour
 {

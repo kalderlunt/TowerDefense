@@ -1,5 +1,5 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Managers;
+using Managers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
