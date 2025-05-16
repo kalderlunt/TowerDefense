@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public SO_Inventory inventoryData; // Référence au ScriptableObject SO_Inventory
-    public TowerData selectedTower; // Tour actuellement sélectionnée
+    public SO_Inventory inventoryData; // Rï¿½fï¿½rence au ScriptableObject SO_Inventory
+    public TowerData selectedTower; // Tour actuellement sï¿½lectionnï¿½e
 
     /// <summary>
-    /// Fonction virtuelle pour remplir l'inventaire (doit être implémentée par les classes enfants).
+    /// Fonction virtuelle pour remplir l'inventaire (doit ï¿½tre implï¿½mentï¿½e par les classes enfants).
     /// </summary>
     protected virtual void PopulateInventory() 
     {
@@ -17,11 +17,11 @@ public class PlayerInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Crée un emplacement d'inventaire.
+    /// Crï¿½e un emplacement d'inventaire.
     /// </summary>
-    /// <param name="inventorySlots">Liste des slots d'inventaire où l'emplacement sera ajouté</param>
-    /// <param name="inventoryItemPrefab">Préfabriqué de l'élément d'inventaire</param>
-    /// <param name="inventoryContainer">Conteneur où les éléments d'inventaire seront instanciés</param>
+    /// <param name="inventorySlots">Liste des slots d'inventaire oï¿½ l'emplacement sera ajoutï¿½</param>
+    /// <param name="inventoryItemPrefab">Prï¿½fabriquï¿½ de l'ï¿½lï¿½ment d'inventaire</param>
+    /// <param name="inventoryContainer">Conteneur oï¿½ les ï¿½lï¿½ments d'inventaire seront instanciï¿½s</param>
     /// <param name="clickAction">L'action que l'on donnera au bouton</param>
     protected void CreateSlotInventory(List<GameObject> inventorySlots, GameObject inventoryItemPrefab, Transform inventoryContainer, UnityAction clickAction)
     {
@@ -35,10 +35,10 @@ public class PlayerInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Met à jour un slot d'inventaire avec les données de la tour.
+    /// Met ï¿½ jour un slot d'inventaire avec les donnï¿½es de la tour.
     /// </summary>
-    /// <param name="tower">Données de la tour à afficher dans le slot</param>
-    /// <param name="clickAction">Action à associer au clic du bouton</param>
+    /// <param name="tower">Donnï¿½es de la tour ï¿½ afficher dans le slot</param>
+    /// <param name="clickAction">Action ï¿½ associer au clic du bouton</param>
     protected void RefreshInventory(List<GameObject> inventorySlots, int index, TowerData tower, UnityAction clickAction)
     {
         //Debug.Log($"Refreshing inventory at index {index} with tower {tower?.towerName}");
@@ -71,10 +71,10 @@ public class PlayerInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Ajoute un listener à un bouton.
+    /// Ajoute un listener ï¿½ un bouton.
     /// </summary>
     /// <param name="button">Le bouton auquel ajouter un listener</param>
-    /// <param name="call">Action à appeler lors du clic sur le bouton</param>
+    /// <param name="call">Action ï¿½ appeler lors du clic sur le bouton</param>
     protected void ButtonAddListener(Button button, UnityAction call)
     {
         button.onClick.RemoveAllListeners();

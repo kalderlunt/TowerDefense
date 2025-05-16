@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -5,7 +6,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float hpMax = 100;
     [SerializeField] private string nextScene = "Menu";
     [HideInInspector] public float lerpTimer;
-    
+
     public float healthMax { get; private set; }
     public float healthPoint { get; private set; }
 
@@ -15,18 +16,18 @@ public class Health : MonoBehaviour
         healthPoint = healthMax;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            IncreaseHealth(4);
-        }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.UpArrow))
+    //     {
+    //         IncreaseHealth(4);
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            DecreaseHealth(4);
-        }
-    }
+    //     if(Input.GetKeyDown(KeyCode.DownArrow))
+    //     {
+    //         DecreaseHealth(4);
+    //     }
+    // }
 
     public void IncreaseHealth(float ammount)
     {

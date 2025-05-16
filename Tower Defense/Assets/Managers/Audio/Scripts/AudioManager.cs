@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Managers
+namespace Managers
 {
     public class AudioManager : MonoBehaviour 
     {
