@@ -1,5 +1,5 @@
-using Assets.Scripts.Managers;
-using Assets.Scripts.Player;
+using Managers;
+using Entities.Player;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,7 +14,8 @@ public class TowerSelectable : MonoBehaviour, ISelectable
 
     private void Start()
     {
-        EventManager.instance.onCancelPlaceTower.AddListener(CancelPlaceTower);
+        //EventManager.instance.onCancelPlaceTower.AddListener(CancelPlaceTower);
+        EventManager.instance.onCancelPlaceTower += CancelPlaceTower;
     }
 
     private void OnEnable()
@@ -78,6 +79,11 @@ public class TowerSelectable : MonoBehaviour, ISelectable
 
     private void CancelPlaceTower()
     {
+        if (tower == null)
+        {
+            return;
+        }
+        
         Destroy(tower.gameObject);
     }
     
@@ -87,7 +93,9 @@ public class TowerSelectable : MonoBehaviour, ISelectable
         colliderYouCanClickOn.enabled = true;
         PlayerMoneyInGame.instance.money -= tower.data.baseCost;
         EventManager.instance.onRefreshMoneyPlayerInGame?.Invoke();
-        EventManager.instance.onCancelPlaceTower.RemoveListener(CancelPlaceTower);
+        
+        EventManager.instance.onCancelPlaceTower -= CancelPlaceTower; //EventManager.instance.onCancelPlaceTower.RemoveListener(CancelPlaceTower);
+        EventManager.instance.onCancelPlaceTower.Invoke();
     }
 
     public void UnPlacedTower()

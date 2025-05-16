@@ -1,7 +1,7 @@
-using Assets.Scripts.Managers;
+using Managers;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Entities.Player
 {
     public class PlayerMoneyInGame : MonoBehaviour
     {
@@ -29,7 +29,8 @@ namespace Assets.Scripts.Player
 
         private void Start()
         {
-            EventManager.instance.AddMoneyPlayerInGame.AddListener(AddMoney);
+            // UnityEvent - EventManager.instance.AddMoneyPlayerInGame.AddListener(AddMoney);
+            EventManager.instance.AddMoneyPlayerInGame += AddMoney;
         }
         
         public void AddMoney(int amount)
